@@ -1,4 +1,4 @@
-#Load Texts
+#Load Texts LENA
 excel_sheets <- excel_sheets(paste0("Texte/Textbausteine_LENA_",abstimmung_date,".xlsx"))
 
 #Votes Metadata

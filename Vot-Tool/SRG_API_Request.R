@@ -20,9 +20,9 @@ timestamp <- strptime(xml_text(xml_find_all(content,".//LastUpdate")),format = '
 
 if (length(timestamp) > 0) { 
   if ((timestamp != current_trend$last_update) & (as.Date(timestamp) == Sys.Date())) {
-print(paste0("New trend found for ",vorlagen$text[v]))
 trend <- xml_text(xml_find_all(content,".//ResultCondition"))
-
+if (trend == "angenommen" || trend == "abgelehnt") {
+print(paste0("New trend found for ",vorlagen$text[v]))
 #Write in DB
 mydb <- connectDB(db_name = "sda_votes")
 sql_qry <- paste0(
@@ -40,6 +40,7 @@ sql_qry <- paste0(
 rs <- dbSendQuery(mydb, sql_qry)
 dbDisconnectAll()
 
+
 #Send Mail
 Subject <- paste0("***TEST***Neuer SRG-Trend zur ",vorlagen$text[v]," veröffentlicht!")
 Body <- paste0("Liebes Keystone-SDA-Team,\n\n",
@@ -52,8 +53,16 @@ send_notification(Subject,
                   Body,
                   paste0(DEFAULT_MAILS))
 
+storyboard <- get_story_trend(trend)
+for (language in sprachen) {
+texts <- get_texts_vot(storyboard,
+                      texts_trend,
+                      language)
+texts <- replace_variables_vot(texts,
+                           language)
 source("./Vot-Tool/create_flash_trend.R", encoding="UTF-8") 
-
+}
+}
 }
 }
 
@@ -111,9 +120,17 @@ if (length(timestamp) > 0) {
   send_notification(Subject,
                     Body,
                     paste0(DEFAULT_MAILS))
-  
-  source("./Vot-Tool/create_flash_hochrechnung.R", encoding="UTF-8") 
-  
+
+  storyboard <- get_story_extrapolation(votes_yes,
+                                votes_no)
+  for (language in sprachen) {
+    texts <- get_texts_vot(storyboard,
+                           texts_extrapolation,
+                           language)
+    texts <- replace_variables_vot(texts,
+                                   language)
+    source("./Vot-Tool/create_flash_hochrechnung.R", encoding="UTF-8") 
+  }
   }
 }
 
@@ -172,8 +189,16 @@ if (length(timestamp) > 0) {
                       Body,
                       paste0(DEFAULT_MAILS))
     
-    
-    source("./Vot-Tool/create_flash_hochrechnung.R", encoding="UTF-8") 
+    storyboard <- get_story_extrapolation(votes_yes,
+                                          votes_no)
+    for (language in sprachen) {
+      texts <- get_texts_vot(storyboard,
+                             texts_extrapolation,
+                             language)
+      texts <- replace_variables_vot(texts,
+                                     language)
+      source("./Vot-Tool/create_flash_hochrechnung.R", encoding="UTF-8") 
+    }
   }
 }
 
@@ -232,7 +257,17 @@ if (length(timestamp) > 0) {
                       Body,
                       paste0(DEFAULT_MAILS))
     
-    source("./Vot-Tool/create_flash_hochrechnung.R", encoding="UTF-8") 
+    
+    storyboard <- get_story_extrapolation(votes_yes,
+                                          votes_no)
+    for (language in sprachen) {
+      texts <- get_texts_vot(storyboard,
+                             texts_extrapolation,
+                             language)
+      texts <- replace_variables_vot(texts,
+                                     language)
+      source("./Vot-Tool/create_flash_hochrechnung.R", encoding="UTF-8") 
+    }
     
   }
 }
