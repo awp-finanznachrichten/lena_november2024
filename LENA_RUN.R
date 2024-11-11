@@ -47,7 +47,7 @@ if (time_check_national == FALSE) {
   source("./Config/commit.R", encoding="UTF-8")
   
   #Tabellen aktualisieren
-  source("votations_septembre_2024/top_flop/09_24_top_flop_run.R", encoding="UTF-8")
+  #source("votations_septembre_2024/top_flop/09_24_top_flop_run.R", encoding="UTF-8")
 }
 
 if (time_check_kantonal == FALSE) {  

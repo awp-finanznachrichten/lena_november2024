@@ -291,27 +291,28 @@ write.xlsx(texts,paste0("./Texte/",vorlagen_short[i],"_texte.xlsx"),row.names = 
 
   }  
   
-  datawrapper_codes_vorlage <- datawrapper_codes[datawrapper_codes$Vorlage == vorlagen_short[i],]
+  datawrapper_codes_vorlage <- datawrapper_codes[datawrapper_codes$Vorlage == "CH_Biodiversitaet",]
+
 
     #Karten Gemeinden
-    dw_edit_chart(datawrapper_codes_vorlage[1,5],intro=undertitel_de,annotate=paste0("Letzte Aktualisierung: ",format(Sys.time(),"%d.%m.%Y %H:%M Uhr")))
-    dw_publish_chart(datawrapper_codes_vorlage[1,5])
+    dw_edit_chart(datawrapper_codes_vorlage$ID[1],intro=undertitel_de,annotate=paste0("Letzte Aktualisierung: ",format(Sys.time(),"%d.%m.%Y %H:%M Uhr")))
+    dw_publish_chart(datawrapper_codes_vorlage$ID[1])
     
-    dw_edit_chart(datawrapper_codes_vorlage[3,5],intro=undertitel_fr,annotate=paste0("dernière mise à jour: ",format(Sys.time(),"%d.%m.%Y %Hh%M")))
-    dw_publish_chart(datawrapper_codes_vorlage[3,5])
+    dw_edit_chart(datawrapper_codes_vorlage$ID[2],intro=undertitel_fr,annotate=paste0("dernière mise à jour: ",format(Sys.time(),"%d.%m.%Y %Hh%M")))
+    dw_publish_chart(datawrapper_codes_vorlage$ID[2])
     
-    dw_edit_chart(datawrapper_codes_vorlage[5,5],intro=undertitel_it,annotate=paste0("Ultimo aggiornamento: ",format(Sys.time(),"%d.%m.%Y %H:%M")))
-    dw_publish_chart(datawrapper_codes_vorlage[5,5])
+    dw_edit_chart(datawrapper_codes_vorlage$ID[3],intro=undertitel_it,annotate=paste0("Ultimo aggiornamento: ",format(Sys.time(),"%d.%m.%Y %H:%M")))
+    dw_publish_chart(datawrapper_codes_vorlage$ID[3])
     
     #Karten Kantone
-    dw_edit_chart(datawrapper_codes_vorlage[2,5],intro=undertitel_de,annotate=paste0("Letzte Aktualisierung: ",format(Sys.time(),"%d.%m.%Y %H:%M Uhr")))
-    dw_publish_chart(datawrapper_codes_vorlage[2,5])
+    dw_edit_chart(datawrapper_codes_vorlage$ID[4],intro=undertitel_de,annotate=paste0("Letzte Aktualisierung: ",format(Sys.time(),"%d.%m.%Y %H:%M Uhr")))
+    dw_publish_chart(datawrapper_codes_vorlage$ID[4])
     
-    dw_edit_chart(datawrapper_codes_vorlage[4,5],intro=undertitel_fr,annotate=paste0("dernière mise à jour: ",format(Sys.time(),"%d.%m.%Y %Hh%M")))
-    dw_publish_chart(datawrapper_codes_vorlage[4,5])
+    dw_edit_chart(datawrapper_codes_vorlage$ID[5],intro=undertitel_fr,annotate=paste0("dernière mise à jour: ",format(Sys.time(),"%d.%m.%Y %Hh%M")))
+    dw_publish_chart(datawrapper_codes_vorlage$ID[5])
     
-    dw_edit_chart(datawrapper_codes_vorlage[6,5],intro=undertitel_it,annotate=paste0("Ultimo aggiornamento: ",format(Sys.time(),"%d.%m.%Y %H:%M")))
-    dw_publish_chart(datawrapper_codes_vorlage[6,5])
+    dw_edit_chart(datawrapper_codes_vorlage$ID[6],intro=undertitel_it,annotate=paste0("Ultimo aggiornamento: ",format(Sys.time(),"%d.%m.%Y %H:%M")))
+    dw_publish_chart(datawrapper_codes_vorlage$ID[6])
   
 
 #Eintrag für Uebersicht
@@ -389,41 +390,44 @@ write.csv(data_overview,"Output_Overviews/Uebersicht_dw.csv", na = "", row.names
 
 
 #Charts Uebersicht
+datawrapper_codes_overview <- datawrapper_codes %>%
+  filter(Typ == "Uebersicht")
+
 #DEUTSCH
-dw_data_to_chart(data_overview,datawrapper_codes[1,5])
+dw_data_to_chart(data_overview,datawrapper_codes_overview$ID[1])
 if (nrow(results_notavailable) == 0) {
 titel_de <- paste0("Die Abstimmungen vom ",day(voting_date),". ",monate_de[month(voting_date)]," ",year(voting_date)," in der Übersicht")  
-dw_edit_chart(datawrapper_codes[1,5],
+dw_edit_chart(datawrapper_codes_overview$ID[1],
               title = titel_de,
               intro = "")
 } else {
-dw_edit_chart(datawrapper_codes[1,5],intro=paste0("Letzte Aktualisierung: ",format(Sys.time(),"%H:%M Uhr")))
+dw_edit_chart(datawrapper_codes_overview$ID[1],intro=paste0("Letzte Aktualisierung: ",format(Sys.time(),"%H:%M Uhr")))
 }  
-dw_publish_chart(datawrapper_codes[1,5])
+dw_publish_chart(datawrapper_codes_overview$ID[1])
 
 #FRANZOESICH
-dw_data_to_chart(data_overview,datawrapper_codes[2,5])
+dw_data_to_chart(data_overview,datawrapper_codes_overview$ID[2])
 if (nrow(results_notavailable) == 0) {
 titel_fr <- paste0("Les résultats des votes du ",day(voting_date)," ",monate_fr[month(voting_date)]," ",year(voting_date))
-dw_edit_chart(datawrapper_codes[2,5],
+dw_edit_chart(datawrapper_codes_overview$ID[2],
                 title = titel_fr,
                 intro = "")
 } else {  
-dw_edit_chart(datawrapper_codes[2,5],intro=paste0("Dernière mise à jour: ",format(Sys.time(),"%Hh%M")))
+dw_edit_chart(datawrapper_codes_overview$ID[2],intro=paste0("Dernière mise à jour: ",format(Sys.time(),"%Hh%M")))
 }
-dw_publish_chart(datawrapper_codes[2,5])
+dw_publish_chart(datawrapper_codes_overview$ID[2])
 
 #ITALIENISCH
-dw_data_to_chart(data_overview,datawrapper_codes[3,5])
+dw_data_to_chart(data_overview,datawrapper_codes_overview$ID[3])
 if (nrow(results_notavailable) == 0) {
 titel_it <- paste0("I risultati delle votazioni del ",day(voting_date)," ",monate_it[month(voting_date)]," ",year(voting_date))
-dw_edit_chart(datawrapper_codes[3,5],
+dw_edit_chart(datawrapper_codes_overview$ID[3],
               title = titel_it,
               intro = "")
 } else {  
-dw_edit_chart(datawrapper_codes[3,5],intro=paste0("Ultimo aggiornamento: ",format(Sys.time(),"%H:%M")))  
+dw_edit_chart(datawrapper_codes_overview$ID[3],intro=paste0("Ultimo aggiornamento: ",format(Sys.time(),"%H:%M")))  
 }  
-dw_publish_chart(datawrapper_codes[3,5])
+dw_publish_chart(datawrapper_codes_overview$ID[3])
 
 #Output Overall Texts
 for (i in 1:length(vorlagen_short)) {

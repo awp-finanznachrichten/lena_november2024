@@ -396,37 +396,37 @@ write.xlsx(texts,paste0("./Texte/",kantonal_short_special[s],"_texte.xlsx"),row.
     
     ###Karten Gemeinden
     
-    datawrapper_codes_vorlage_overview <- datawrapper_codes_kantonal[datawrapper_codes_kantonal$Vorlage == kantonal_short_special[s] &
-                                                                         datawrapper_codes_kantonal$Typ == "Kantonale Vorlage Overview",]
-    datawrapper_codes_vorlage_initiative <- datawrapper_codes_kantonal[datawrapper_codes_kantonal$Vorlage == kantonal_short_special[s] &
-                                                              datawrapper_codes_kantonal$Typ == "Kantonale Vorlage Initiative",]
-    datawrapper_codes_vorlage_gegenvorschlag <- datawrapper_codes_kantonal[datawrapper_codes_kantonal$Vorlage == kantonal_short_special[s] &
-                                                              datawrapper_codes_kantonal$Typ == "Kantonale Vorlage Gegenvorschlag",]
-    datawrapper_codes_vorlage_stichentscheid <- datawrapper_codes_kantonal[datawrapper_codes_kantonal$Vorlage == kantonal_short_special[s] &
-                                                              datawrapper_codes_kantonal$Typ == "Kantonale Vorlage Stichentscheid",]
+    datawrapper_codes_vorlage_overview <- datawrapper_codes[datawrapper_codes$Vorlage == kantonal_short_special[s] &
+                                                                         datawrapper_codes$Typ == "Kantonale Vorlage Overview",]
+    datawrapper_codes_vorlage_initiative <- datawrapper_codes[datawrapper_codes$Vorlage == kantonal_short_special[s] &
+                                                              datawrapper_codes$Typ == "Kantonale Vorlage Initiative",]
+    datawrapper_codes_vorlage_gegenvorschlag <- datawrapper_codes[datawrapper_codes$Vorlage == kantonal_short_special[s] &
+                                                              datawrapper_codes$Typ == "Kantonale Vorlage Gegenvorschlag",]
+    datawrapper_codes_vorlage_stichentscheid <- datawrapper_codes[datawrapper_codes$Vorlage == kantonal_short_special[s] &
+                                                              datawrapper_codes$Typ == "Kantonale Vorlage Stichentscheid",]
     
     
     for (r in 1:nrow(datawrapper_codes_vorlage_overview)) {
       if (datawrapper_codes_vorlage_overview$Sprache[r] == "de-DE") {
-        dw_edit_chart(datawrapper_codes_vorlage_overview[r,5],
+        dw_edit_chart(datawrapper_codes_vorlage_overview$ID[r],
                       intro=paste0(undertitel_overview_de,'<br>
 <span style="line-height:30px">
-  <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview[r,5],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Übersicht&nbsp;&nbsp;</a> &nbsp;
-  <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Initiative&nbsp;&nbsp;</a> &nbsp;
-                                     <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Gegenvorschlag</a> &nbsp;
-                                   <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Stichentscheid</a> &nbsp;'),
+  <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview$ID[r],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Übersicht&nbsp;&nbsp;</a> &nbsp;
+  <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Initiative&nbsp;&nbsp;</a> &nbsp;
+                                     <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Gegenvorschlag</a> &nbsp;
+                                   <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Stichentscheid</a> &nbsp;'),
                       annotate=paste0("Letzte Aktualisierung: ",format(Sys.time(),"%d.%m.%Y %H:%M Uhr")))
-        dw_publish_chart(datawrapper_codes_vorlage_overview[r,5])
+        dw_publish_chart(datawrapper_codes_vorlage_overview$ID[r])
       } else {
-        dw_edit_chart(datawrapper_codes_vorlage_overview[r,5],
+        dw_edit_chart(datawrapper_codes_vorlage_overview$ID[r],
                       intro=paste0(undertitel_overview_fr,'<br>
 <span style="line-height:30px">
-<a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview[r,5],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;aperçu&nbsp;&nbsp;</a> &nbsp;
-  <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;initiative&nbsp;&nbsp;</a> &nbsp;
-                                     <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> contre-proposition</a> &nbsp;
-                                   <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> question subsidiaire</a> &nbsp;'),
+<a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview$ID[r],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;aperçu&nbsp;&nbsp;</a> &nbsp;
+  <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;initiative&nbsp;&nbsp;</a> &nbsp;
+                                     <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> contre-proposition</a> &nbsp;
+                                   <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> question subsidiaire</a> &nbsp;'),
                       annotate=paste0("dernière mise à jour: ",format(Sys.time(),"%d.%m.%Y %Hh%M")))
-        dw_publish_chart(datawrapper_codes_vorlage_overview[r,5])
+        dw_publish_chart(datawrapper_codes_vorlage_overview$ID[r])
       }
     }
     
@@ -434,73 +434,73 @@ write.xlsx(texts,paste0("./Texte/",kantonal_short_special[s],"_texte.xlsx"),row.
     
     for (r in 1:nrow(datawrapper_codes_vorlage_initiative)) {
       if (datawrapper_codes_vorlage_initiative$Sprache[r] == "de-DE") {
-        dw_edit_chart(datawrapper_codes_vorlage_initiative[r,5],
+        dw_edit_chart(datawrapper_codes_vorlage_initiative$ID[r],
                       intro=paste0(undertitel_initiative_de,'<br>
 <span style="line-height:30px">
-<a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Übersicht&nbsp;&nbsp;</a> &nbsp;
-  <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative[r,5],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Initiative&nbsp;&nbsp;</a> &nbsp;
-                                     <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Gegenvorschlag</a> &nbsp;
-                                   <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Stichentscheid</a> &nbsp;'),
+<a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Übersicht&nbsp;&nbsp;</a> &nbsp;
+  <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative$ID[r],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Initiative&nbsp;&nbsp;</a> &nbsp;
+                                     <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Gegenvorschlag</a> &nbsp;
+                                   <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Stichentscheid</a> &nbsp;'),
                       annotate=paste0("Letzte Aktualisierung: ",format(Sys.time(),"%d.%m.%Y %H:%M Uhr")))
-        dw_publish_chart(datawrapper_codes_vorlage_initiative[r,5])
+        dw_publish_chart(datawrapper_codes_vorlage_initiative$ID[r])
       } else {
-        dw_edit_chart(datawrapper_codes_vorlage_initiative[r,5],
+        dw_edit_chart(datawrapper_codes_vorlage_initiative$ID[r],
                       intro=paste0(undertitel_initiative_fr,'<br>
 <span style="line-height:30px">
-<a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;aperçu&nbsp;&nbsp;</a> &nbsp;
-  <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative[r,5],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;initiative&nbsp;&nbsp;</a> &nbsp;
-                                     <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> contre-proposition</a> &nbsp;
-                                   <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> question subsidiaire</a> &nbsp;'),
+<a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;aperçu&nbsp;&nbsp;</a> &nbsp;
+  <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative$ID[r],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;initiative&nbsp;&nbsp;</a> &nbsp;
+                                     <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> contre-proposition</a> &nbsp;
+                                   <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> question subsidiaire</a> &nbsp;'),
                       annotate=paste0("dernière mise à jour: ",format(Sys.time(),"%d.%m.%Y %Hh%M")))
-        dw_publish_chart(datawrapper_codes_vorlage_initiative[r,5])
+        dw_publish_chart(datawrapper_codes_vorlage_initiative$ID[r])
       }
     }
 
     for (r in 1:nrow(datawrapper_codes_vorlage_gegenvorschlag)) {
       if (datawrapper_codes_vorlage_gegenvorschlag$Sprache[r] == "de-DE") {
-        dw_edit_chart(datawrapper_codes_vorlage_gegenvorschlag[r,5],
+        dw_edit_chart(datawrapper_codes_vorlage_gegenvorschlag$ID[r],
                       intro=paste0(undertitel_gegenvorschlag_de,'<br>
                         <span style="line-height:30px">
-                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Übersicht&nbsp;&nbsp;</a> &nbsp;
-                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Initiative&nbsp;&nbsp;</a> &nbsp;
-                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag[r,5],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Gegenvorschlag</a> &nbsp;
-                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Stichentscheid</a> &nbsp;'),
+                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Übersicht&nbsp;&nbsp;</a> &nbsp;
+                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Initiative&nbsp;&nbsp;</a> &nbsp;
+                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag$ID[r],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Gegenvorschlag</a> &nbsp;
+                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Stichentscheid</a> &nbsp;'),
                       annotate=paste0("Letzte Aktualisierung: ",format(Sys.time(),"%d.%m.%Y %H:%M Uhr")))
-        dw_publish_chart(datawrapper_codes_vorlage_gegenvorschlag[r,5])
+        dw_publish_chart(datawrapper_codes_vorlage_gegenvorschlag$ID[r])
       } else {
-        dw_edit_chart(datawrapper_codes_vorlage_gegenvorschlag[r,5],
+        dw_edit_chart(datawrapper_codes_vorlage_gegenvorschlag$ID[r],
                       intro=paste0(undertitel_gegenvorschlag_fr,'<br>
                         <span style="line-height:30px">
-                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;aperçu&nbsp;&nbsp;</a> &nbsp;
-                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;initiative&nbsp;&nbsp;</a> &nbsp;
-                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag[r,5],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> contre-proposition</a> &nbsp;
-                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> question subsidiaire</a> &nbsp;'),
+                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;aperçu&nbsp;&nbsp;</a> &nbsp;
+                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;initiative&nbsp;&nbsp;</a> &nbsp;
+                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag$ID[r],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> contre-proposition</a> &nbsp;
+                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> question subsidiaire</a> &nbsp;'),
                       annotate=paste0("dernière mise à jour: ",format(Sys.time(),"%d.%m.%Y %Hh%M")))
-        dw_publish_chart(datawrapper_codes_vorlage_gegenvorschlag[r,5])
+        dw_publish_chart(datawrapper_codes_vorlage_gegenvorschlag$ID[r])
       }
     }
 
     for (r in 1:nrow(datawrapper_codes_vorlage_stichentscheid)) {
       if (datawrapper_codes_vorlage_stichentscheid$Sprache[r] == "de-DE") {
-        dw_edit_chart(datawrapper_codes_vorlage_stichentscheid[r,5],
+        dw_edit_chart(datawrapper_codes_vorlage_stichentscheid$ID[r],
                       intro=paste0(undertitel_stichentscheid_de,'<br>
                         <span style="line-height:30px">
-                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Übersicht&nbsp;&nbsp;</a> &nbsp;
-                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Initiative&nbsp;&nbsp;</a> &nbsp;
-                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Gegenvorschlag</a> &nbsp;
-                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid[r,5],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Stichentscheid</a> &nbsp;'),
+                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Übersicht&nbsp;&nbsp;</a> &nbsp;
+                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;Initiative&nbsp;&nbsp;</a> &nbsp;
+                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Gegenvorschlag</a> &nbsp;
+                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid$ID[r],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> Stichentscheid</a> &nbsp;'),
                       annotate=paste0("Letzte Aktualisierung: ",format(Sys.time(),"%d.%m.%Y %H:%M Uhr")))
-        dw_publish_chart(datawrapper_codes_vorlage_stichentscheid[r,5])
+        dw_publish_chart(datawrapper_codes_vorlage_stichentscheid$ID[r])
       } else {
-        dw_edit_chart(datawrapper_codes_vorlage_stichentscheid[r,5],
+        dw_edit_chart(datawrapper_codes_vorlage_stichentscheid$ID[r],
                       intro=paste0(undertitel_stichentscheid_fr,'<br>
                         <span style="line-height:30px">
-                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;aperçu&nbsp;&nbsp;</a> &nbsp;
-                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;initiative&nbsp;&nbsp;</a> &nbsp;
-                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag[r,5],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> contre-proposition</a> &nbsp;
-                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid[r,5],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> question subsidiaire<</a> &nbsp;'),
+                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_overview$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;aperçu&nbsp;&nbsp;</a> &nbsp;
+                        <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_initiative$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer">&nbsp;&nbsp;initiative&nbsp;&nbsp;</a> &nbsp;
+                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_gegenvorschlag$ID[r],'/" style="background:#808080; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> contre-proposition</a> &nbsp;
+                      <a target="_self" href="https://datawrapper.dwcdn.net/',datawrapper_codes_vorlage_stichentscheid$ID[r],'/" style="background:#429ddd; padding:4px 6px; border-radius:5px; color:#ffffff; font-weight:400; box-shadow:0px 0px 7px 2px rgba(0,0,0,0.07); cursor:pointer;" rel="nofollow noopener noreferrer"> question subsidiaire<</a> &nbsp;'),
                       annotate=paste0("dernière mise à jour: ",format(Sys.time(),"%d.%m.%Y %Hh%M")))
-        dw_publish_chart(datawrapper_codes_vorlage_stichentscheid[r,5])
+        dw_publish_chart(datawrapper_codes_vorlage_stichentscheid$ID[r])
       }
     }
   }  

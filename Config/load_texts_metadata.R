@@ -30,6 +30,14 @@ cantons_overview <- meta_kt %>%
 mail_cantons <- meta_kt %>%
   select(area_ID,mail_KeySDA)
 
+#Datawrapper-Codes
+mydb <- connectDB(db_name="sda_votes")
+rs <- dbSendQuery(mydb, paste0("SELECT * FROM datawrapper_codes WHERE date = '",voting_date,"'"))
+datawrapper_codes <- DBI::fetch(rs,n=-1)
+dbDisconnectAll()
+
+datawrapper_auth(Sys.getenv("DW_KEY"), overwrite = TRUE)
+
 ###Historical Data (if available)
 #data_hist <- fromJSON("./Data/sd-t-17-02-20100307-eidgAbstimmung.json", flatten = TRUE)
 #data_hist <- get_results(data_hist,3,level="communal")
@@ -41,10 +49,5 @@ mail_cantons <- meta_kt %>%
 #  mutate(Hist_Nein_Stimmen_In_Prozent = 100 - Hist_Ja_Stimmen_In_Prozent)
 #data_hist <- na.omit(data_hist)
 
-#Datawrapper-Codes
-datawrapper_codes <- as.data.frame(read_excel("Data/metadaten_grafiken_eidgenössische_Abstimmungen.xlsx"))
-datawrapper_codes_kantonal <- as.data.frame(read_excel("Data/metadaten_grafiken_kantonale_Abstimmungen.xlsx"))
-datawrapper_codes_kantonal <- datawrapper_codes_kantonal[,c(1:5)]
 
-datawrapper_auth(Sys.getenv("DW_KEY"), overwrite = TRUE)
 

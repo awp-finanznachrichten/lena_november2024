@@ -99,7 +99,7 @@ data_overview <- data_overview[-1,]
 write.csv(data_overview,paste0("Output_Overviews/Uebersicht_dw_",kantone_list$geoLevelname[k],".csv"), na = "", row.names = FALSE, fileEncoding = "UTF-8")
 
 #Update Datawrapper-Chart
-datawrapper_ids <- datawrapper_codes_kantonal %>%
+datawrapper_ids <- datawrapper_codes %>%
   filter(Typ == "Uebersicht Kanton",
          Vorlage == kantone_list$geoLevelname[k])
 
