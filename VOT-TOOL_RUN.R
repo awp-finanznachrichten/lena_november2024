@@ -10,10 +10,10 @@ source("./Config/load_libraries_functions.R",encoding = "UTF-8")
 source("./Config/set_constants.R",encoding = "UTF-8")
 
 #SET ADDITIONAL CONSTANTS
-VOTATION_IDS_SRG <- c(5081,5082)
-CATCHWORDS_DE <- c("Verkehr","Mietrecht","Mietrecht","Gesundheit")
-CATCHWORDS_FR <- c("Verkehr","Mietrecht","Mietrecht","Gesundheit")
-CATCHWORDS_IT <- c("Verkehr","Mietrecht","Mietrecht","Gesundheit")
+VOTATION_IDS_SRG <- c(5081,5082,5083,5084)
+CATCHWORDS_DE <- c("Verkehr","Wohnen","Wohnen","Gesundheit")
+CATCHWORDS_FR <- c("Verkehr","Wohnen","Mietrecht","Gesundheit")
+CATCHWORDS_IT <- c("Verkehr","Wohnen","Wohnen","Gesundheit")
 
 ###Load texts and metadata###
 source("./Config/load_texts_metadata.R",encoding = "UTF-8")
@@ -57,11 +57,22 @@ for (i in 1:nrow(output_overview)) {
       #CREATE MARS NEWS
       if (output_overview$news_results[i] == "pending") {
       print(paste0("creating mars news with results of canton ",canton_results$area_ID[1],"..."))
+
+
+      storyboard <- get_story_results_canton()
+        for (language in sprachen) {
+          texts <- get_texts_vot(storyboard,
+                                 texts_canton,
+                                 language)
+          texts <- replace_variables_vot(texts,
+                                         language,
+                                         type = "results")  
+  
       source("./Vot-Tool/create_news_cantonal.R", encoding="UTF-8") 
       }  
     }
   }  
-  
+}  
 #####CREATE FLASH AM STÄNDEMEHR GESCHEITERT (IF NEEDED)####
 for (v in 1:nrow(vorlagen)) {
 if (output_flashes[output_flashes$votes_ID == vorlagen$id[v],]$flash_staendemehr == "pending") {  
@@ -88,7 +99,8 @@ if (output_flashes[output_flashes$votes_ID == vorlagen$id[v],]$flash_staendemehr
                            texts_staendemehr,
                            language)
     texts <- replace_variables_vot(texts,
-                                   language)
+                                   language,
+                                   type = "staendemehr")
     source("./Vot-Tool/create_flash_staendemehr.R", encoding="UTF-8") 
   }
   #Set output to done

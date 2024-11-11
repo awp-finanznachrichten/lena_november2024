@@ -40,7 +40,6 @@ sql_qry <- paste0(
 rs <- dbSendQuery(mydb, sql_qry)
 dbDisconnectAll()
 
-
 #Send Mail
 Subject <- paste0("***TEST***Neuer SRG-Trend zur ",vorlagen$text[v]," veröffentlicht!")
 Body <- paste0("Liebes Keystone-SDA-Team,\n\n",
@@ -59,7 +58,8 @@ texts <- get_texts_vot(storyboard,
                       texts_trend,
                       language)
 texts <- replace_variables_vot(texts,
-                           language)
+                           language,
+                           type = "trend")
 source("./Vot-Tool/create_flash_trend.R", encoding="UTF-8") 
 }
 }
@@ -128,12 +128,12 @@ if (length(timestamp) > 0) {
                            texts_extrapolation,
                            language)
     texts <- replace_variables_vot(texts,
-                                   language)
+                                   language,
+                                   type = "extrapolation")
     source("./Vot-Tool/create_flash_hochrechnung.R", encoding="UTF-8") 
   }
   }
 }
-
 
 #Hochrechnung 2
 current_extrapolation <- extrapolations %>%
@@ -196,7 +196,8 @@ if (length(timestamp) > 0) {
                              texts_extrapolation,
                              language)
       texts <- replace_variables_vot(texts,
-                                     language)
+                                     language,
+                                     type = "extrapolation")
       source("./Vot-Tool/create_flash_hochrechnung.R", encoding="UTF-8") 
     }
   }
@@ -265,7 +266,8 @@ if (length(timestamp) > 0) {
                              texts_extrapolation,
                              language)
       texts <- replace_variables_vot(texts,
-                                     language)
+                                     language,
+                                     type = "extrapolation")
       source("./Vot-Tool/create_flash_hochrechnung.R", encoding="UTF-8") 
     }
     

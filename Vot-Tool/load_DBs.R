@@ -7,7 +7,6 @@ dbDisconnectAll()
 cantons_results <- cantons_results %>%
   filter(grepl(paste(vorlagen$id,collapse="|"),votes_ID) == TRUE)
 
-
 ###GET OUTPUT OVERVIEW###
 mydb <- connectDB(db_name="sda_votes")
 rs <- dbSendQuery(mydb, paste0("SELECT * FROM output_overview WHERE date = '",voting_date,"' AND area_ID != 'CH' AND voting_type = 'national'"))
