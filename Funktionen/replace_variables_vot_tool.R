@@ -24,8 +24,6 @@ replace_variables_vot <- function(texts,
     texts <- str_replace_all(texts,"#Kanton_d",canton_metadata$area_name_de)
     texts <- str_replace_all(texts,"#Kanton_f",canton_metadata$area_name_fr)
     texts <- str_replace_all(texts,"#Kanton_i",canton_metadata$area_name_it)
-    
-    texts <- str_replace_all(texts," #List_missing_cantons",canton_metadata$area_ID)
 
     count <- 1
     for (i in seq(5,(4+3*nrow(vorlagen)),3)) {
@@ -75,7 +73,6 @@ replace_variables_vot <- function(texts,
       texts[i:(i+3)] <- str_replace_all(texts[i:(i+3)],"#Name_Vorlage_d",gsub(":","",vorlagen$text[count]))
       texts[i:(i+3)] <- str_replace_all(texts[i:(i+3)],"#Name_Vorlage_f",gsub(":","",vorlagen_fr$text[count]))
       texts[i:(i+3)] <- str_replace_all(texts[i:(i+3)],"#Name_Vorlage_i",gsub(":","",vorlagen_it$text[count]))
-      texts[i:(i+3)] <- str_replace_all(texts[i:(i+3)],"#Name_Vorlage_i",gsub(":","",vorlagen_it$text[count]))
       
       if (is.na(extrapolation_vorlage$share_votes_yes) == FALSE) {
       texts[i:(i+3)] <- str_replace_all(texts[i:(i+3)],"#hochrechnung_yes",toString(extrapolation_vorlage$share_votes_yes))
@@ -87,7 +84,109 @@ replace_variables_vot <- function(texts,
 
     texts <- str_replace_all(texts,"#List_missing_cantons",not_counted_list)
 
-    }
+  }
+  
+  if (type == "intermediate") {
+    
+    staende <- meta_kt %>%
+      select(area_ID,staende_count,area_name_de)
+    all_cantons <- cantons_results %>%
+      filter(votes_ID == vorlagen$id[v]) %>%
+      left_join(staende)
+    yes_cantons <- all_cantons %>%
+      filter(result == "yes")
+    no_cantons <- all_cantons %>%
+      filter(result == "no")
+    not_counted <- all_cantons %>%
+      filter(is.na(result) == TRUE)
+    counted_cantons <- nrow(yes_cantons) + nrow(no_cantons)
+    yes_cantons_list <- "-"
+    staende_yes <- 0
+    if (nrow(yes_cantons) > 0) {
+      yes_cantons_list <- paste(yes_cantons$area_ID,collapse = ", ")  
+      staende_yes <- sum(yes_cantons$staende_count)
+    }  
+    no_cantons_list <- "-"
+    staende_no <- 0
+    if (nrow(no_cantons) > 0) {
+      no_cantons_list <- paste(no_cantons$area_ID,collapse = ", ")  
+      staende_no <- sum(no_cantons$staende_count)
+    }  
+    not_counted_list <- "-"
+    if (nrow(not_counted) > 0) {
+      not_counted_list <- paste(not_counted$area_ID,collapse = ", ")  
+    }  
+    
+    ###GET EXTRAPOLATION
+    extrapolation_vorlage <- extrapolations %>%
+      filter(votes_ID == vorlagen$id[v]) %>%
+      arrange(desc(last_update)) %>%
+      .[1,]
+    
+      texts <- str_replace_all(texts,"#Name_Vorlage_d",gsub(":","",vorlagen$text[v]))
+      texts <- str_replace_all(texts,"#Name_Vorlage_f",gsub(":","",vorlagen_fr$text[v]))
+      texts <- str_replace_all(texts,"#Name_Vorlage_i",gsub(":","",vorlagen_it$text[v]))
+
+      texts <- str_replace_all(texts,"#cantons_counted",toString(counted_cantons))
+      texts <- str_replace_all(texts,"#staende_yes",toString(staende_yes))
+      texts <- str_replace_all(texts,"#staende_no",toString(staende_no))
+      texts <- str_replace_all(texts,"#List_missing_cantons",not_counted_list)
+      
+      
+      if (is.na(extrapolation_vorlage$share_votes_yes) == FALSE) {
+        texts <- str_replace_all(texts,"#hochrechnung_yes",toString(extrapolation_vorlage$share_votes_yes))
+        texts <- str_replace_all(texts,"#hochrechnung_no",toString(extrapolation_vorlage$share_votes_no))
+        texts <- str_replace_all(texts,"#Hochrechnung_time", format(strptime(extrapolation_vorlage$last_update, "%Y-%m-%d %H:%M:%S"),"%H:%M"))
+      }
+  }
+  
+  if (type == "endresult") {
+    
+    staende <- meta_kt %>%
+      select(area_ID,staende_count,area_name_de)
+    all_cantons <- cantons_results %>%
+      filter(votes_ID == vorlagen$id[v]) %>%
+      left_join(staende)
+    yes_cantons <- all_cantons %>%
+      filter(result == "yes")
+    no_cantons <- all_cantons %>%
+      filter(result == "no")
+    not_counted <- all_cantons %>%
+      filter(is.na(result) == TRUE)
+    counted_cantons <- nrow(yes_cantons) + nrow(no_cantons)
+    yes_cantons_list <- "-"
+    staende_yes <- 0
+    if (nrow(yes_cantons) > 0) {
+      yes_cantons_list <- paste(yes_cantons$area_ID,collapse = ", ")  
+      staende_yes <- sum(yes_cantons$staende_count)
+    }  
+    no_cantons_list <- "-"
+    staende_no <- 0
+    if (nrow(no_cantons) > 0) {
+      no_cantons_list <- paste(no_cantons$area_ID,collapse = ", ")  
+      staende_no <- sum(no_cantons$staende_count)
+    }  
+    not_counted_list <- "-"
+    if (nrow(not_counted) > 0) {
+      not_counted_list <- paste(not_counted$area_ID,collapse = ", ")  
+    }  
+    
+    result_yes <- gsub("[.]",",",format(round2(json_data[["schweiz"]][["vorlagen"]][["resultat.jaStimmenInProzent"]][v],2),nsmall=2))
+    result_no <- gsub("[.]",",",format(100-round2(json_data[["schweiz"]][["vorlagen"]][["resultat.jaStimmenInProzent"]][v],2),nsmall=2))
+    
+    texts <- str_replace_all(texts,"#Name_Vorlage_d",gsub(":","",vorlagen$text[v]))
+    texts <- str_replace_all(texts,"#Name_Vorlage_f",gsub(":","",vorlagen_fr$text[v]))
+    texts <- str_replace_all(texts,"#Name_Vorlage_i",gsub(":","",vorlagen_it$text[v]))
+    
+    texts <- str_replace_all(texts,"#result_yes",result_yes)
+    texts <- str_replace_all(texts,"#result_no",result_no)
+    texts <- str_replace_all(texts,"#staende_yes",toString(staende_yes))
+    texts <- str_replace_all(texts,"#staende_no",toString(staende_no))
+    texts <- str_replace_all(texts,"#List_cantons_yes",yes_cantons_list)
+    texts <- str_replace_all(texts,"#List_cantons_no",no_cantons_list)
+    
+  }
+  
     
   if (language == "fr") {
     ##Französisch

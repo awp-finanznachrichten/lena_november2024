@@ -1,4 +1,4 @@
-MAIN_PATH <- "C:/Users/sw/OneDrive/SDA_eidgenoessische_abstimmungen/20241124_LENA_Abstimmungen"
+MAIN_PATH <- "C:/Users/simon/OneDrive/SDA_eidgenoessische_abstimmungen/20241124_LENA_Abstimmungen"
 
 #Working Directory definieren
 setwd(MAIN_PATH)
@@ -58,7 +58,6 @@ for (i in 1:nrow(output_overview)) {
       if (output_overview$news_results[i] == "pending") {
       print(paste0("creating mars news with results of canton ",canton_results$area_ID[1],"..."))
 
-
       storyboard <- get_story_results_canton()
         for (language in sprachen) {
           texts <- get_texts_vot(storyboard,
@@ -67,12 +66,13 @@ for (i in 1:nrow(output_overview)) {
           texts <- replace_variables_vot(texts,
                                          language,
                                          type = "results")  
-  
+
       source("./Vot-Tool/create_news_cantonal.R", encoding="UTF-8") 
       }  
     }
   }  
 }  
+
 #####CREATE FLASH AM STÄNDEMEHR GESCHEITERT (IF NEEDED)####
 for (v in 1:nrow(vorlagen)) {
 if (output_flashes[output_flashes$votes_ID == vorlagen$id[v],]$flash_staendemehr == "pending") {  
@@ -125,7 +125,38 @@ if (output_flashes[output_flashes$votes_ID == vorlagen$id[v],]$flash_staendemehr
 #####CREATE INTERMEDIATE NEWS####
 if (Sys.time() > output_news_intermediate$timestamp[1]) {
   print("Generiere Zwischenstands-Meldungen...")
+  
+  for (v in 1:nrow(vorlagen)) {
+
+  storyboard <- get_story_intermediate()
+    for (language in sprachen) {
+      texts <- get_texts_vot(storyboard,
+                             texts_intermediate,
+                             language)
+      texts <- replace_variables_vot(texts,
+                                     language,
+                                     type = "intermediate") 
+
   source("./Vot-Tool/create_news_intermediate.R", encoding="UTF-8") 
+  }  
+    
+  }
+  
+  #Send Mail
+  Subject <- paste0("***TEST***Neue Zwischenstandsmeldung erstellt")
+  Body <- paste0("Liebes Keystone-SDA-Team,\n\n",
+                 "Neue Zwischenstands-Meldungen mit allen ausgezählten Kantonen zu jeder Vorlage wurde erstellt.\n\n",
+                 "Ihr findet die Meldungen im Mars im Input-Ordner Lena.\n\n",
+                 "Liebe Grüsse\n\nLENA")
+  send_notification(Subject,
+                    Body,
+                    paste0(DEFAULT_MAILS))  
+  
+  #Set output to done
+  mydb <- connectDB(db_name = "sda_votes")  
+  sql_qry <- paste0("UPDATE output_news_intermediate SET news_intermediate = 'done' WHERE timestamp = '",output_news_intermediate$timestamp[1],"'")
+  rs <- dbSendQuery(mydb, sql_qry)
+  dbDisconnectAll() 
 }
 
 #####CREATE ELECTION COMPLETED REPORT####
@@ -135,7 +166,27 @@ if (output_overview_national$mail_results[1] == "pending") {
 source("./Vot-Tool/send_mail_election_completed.R", encoding="UTF-8")
 }  
 if (output_overview_national$news_results[1] == "pending") { 
+  
+for (v in 1:nrow(vorlagen)) {
+texts
+  storyboard <- get_story_endresult()
+  for (language in sprachen) {
+    texts <- get_texts_vot(storyboard,
+                           texts_final_result,
+                           language)
+    texts <- replace_variables_vot(texts,
+                                   language,
+                                   type = "endresult")   
+  
 source("./Vot-Tool/create_news_election_completed.R", encoding="UTF-8") 
+}    
+}
+
+#Set mail output to done
+mydb <- connectDB(db_name = "sda_votes")  
+sql_qry <- paste0("UPDATE output_overview SET news_results = 'done' WHERE date = '",voting_date,"' AND voting_type = 'national' AND area_ID = 'CH'")
+rs <- dbSendQuery(mydb, sql_qry)
+dbDisconnectAll()   
 }   
 }  
 Sys.sleep(5)

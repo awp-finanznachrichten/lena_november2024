@@ -9,6 +9,7 @@ source("./tools/Funktionen/Utils.R", encoding = "UTF-8")
 #Vot-Tool
 source("./Funktionen/functions_storyfinder_vot_tool.R", encoding = "UTF-8")
 source("./Funktionen/function_storybuilder_vot_tool.R", encoding = "UTF-8")
+source("./Funktionen/replace_variables_vot_tool.R", encoding = "UTF-8")
 
 #Bibliotheken laden
 library(dplyr)

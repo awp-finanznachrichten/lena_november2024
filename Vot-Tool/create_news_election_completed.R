@@ -1,4 +1,3 @@
-for (v in 1:nrow(vorlagen)) {
 
 ###Deutsch
 date_and_time <- paste0(format(Sys.time(), "%Y-%m-%dT%H:%M:%S"),"+02:00")
@@ -127,13 +126,7 @@ ftpUpload(filename, paste0("ftp://awp-lena.sda-ats.ch/",filename),userpwd=Sys.ge
 
 setwd("..")
 
-}
 
-#Set mail output to done
-mydb <- connectDB(db_name = "sda_votes")  
-sql_qry <- paste0("UPDATE output_overview SET news_results = 'done' WHERE date = '",voting_date,"' AND voting_type = 'national' AND area_ID = 'CH'")
-rs <- dbSendQuery(mydb, sql_qry)
-dbDisconnectAll() 
 
 
 
