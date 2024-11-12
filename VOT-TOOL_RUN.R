@@ -168,7 +168,7 @@ source("./Vot-Tool/send_mail_election_completed.R", encoding="UTF-8")
 if (output_overview_national$news_results[1] == "pending") { 
   
 for (v in 1:nrow(vorlagen)) {
-texts
+
   storyboard <- get_story_endresult()
   for (language in sprachen) {
     texts <- get_texts_vot(storyboard,
@@ -177,7 +177,7 @@ texts
     texts <- replace_variables_vot(texts,
                                    language,
                                    type = "endresult")   
-  
+
 source("./Vot-Tool/create_news_election_completed.R", encoding="UTF-8") 
 }    
 }

@@ -68,8 +68,6 @@ if (language == "fr") {
                  '<td>quota di "no"</td>',
                  "<td>partecipazione al voto</td></tr>\n")  
 }  
-
-
 if (language == "it") {
   text <- paste0(text,"<table><tbody>\n",
                  "<tr>",

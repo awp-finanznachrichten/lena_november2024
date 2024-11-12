@@ -33,7 +33,7 @@ replace_variables_vot <- function(texts,
     texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#Name_Vorlage_i",gsub(":","",vorlagen_it$text[count]))
     texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#Result_Text_d",ifelse(canton_results$result[count] == "yes","JA","NEIN"))
     texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#Result_Text_f",ifelse(canton_results$result[count] == "yes","OUI","NON"))
-    texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#Result_Text_i",ifelse(canton_results$result[count] == "yes","SI","NO"))
+    texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#Result_Text_i",ifelse(canton_results$result[count] == "yes","SÌ","NO"))
 
     texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#yes_percentage",gsub("[.]",",",format(canton_results$share_yes_percentage[count],nsmall=2)))
     texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#no_percentage",gsub("[.]",",",format(canton_results$share_no_percentage[count],nsmall=2)))

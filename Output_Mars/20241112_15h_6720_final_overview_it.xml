@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<newsMessage xmlns="http://iptc.org/std/nar/2006-10-01/">
+  <header>
+    <sent>2024-11-12T15:51:00+02:00</sent>
+  </header>
+
+  <itemSet>
+    <newsItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://iptc.org/std/nar/2006-10-01/" standard="NewsML-G2" standardversion="2.28" conformance="power" xml:lang="it" guid="urn:newsml:keystone-sda.ch:20241112:20241112155100660485050448190" version="1">
+      <catalogRef href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_34.xml"/>
+      <catalogRef href="http://www.keystone-sda.ch/NewsML_G2/SDA-G2-Catalog.xml"/>
+
+      <itemMeta>
+        <itemClass qcode="ninat:text"/>
+        <provider qcode="nprov:KSDA">
+           <name>sda</name>
+        </provider>
+        <versionCreated>2024-11-12T15:51:00+02:00</versionCreated>
+        <pubStatus qcode="stat:withheld"/>
+        <generator versioninfo="0.3.4">XML::NewsML_G2</generator>
+        <service qcode="sdasvc:bsi"></service>
+        <edNote role="sdanote:note">Questa notizia è stata generata automaticamente in base ai dati dell'Ufficio federale di statistica (UST) e verificata prima della pubblicazione.</edNote>
+        <edNote role="sdalena:memo">DIES IST EIN TEST</edNote>
+        
+      </itemMeta>
+
+      <contentMeta>
+        <urgency>2</urgency>
+        <contentCreated>2024-11-12T15:51:00+02:00</contentCreated>
+        <creator>
+          <name>sda-robot</name>
+        </creator>
+        <altId>660485050448190</altId>
+        <dateline>BERNA</dateline>
+        <language tag="it"/>
+        <genre qcode="sdagenre:RES">
+        </genre>
+
+        <!--storytypes-->
+        <subject type="cpnat:abstract" qcode="sdastorytype:tble"></subject>
+        
+        <!--media topics-->
+        <subject type="cpnat:abstract" qcode="sdamarschannel:POL"></subject>
+<subject type="cpnat:abstract" qcode="sdamarschannel:VOT"></subject>
+
+        <!--locations-->
+        <located type="loctype:city" qcode="sdamarsgeo:BRN">
+<name>Bern</name>
+</located>
+  
+        <slugline>vot tabella</slugline>
+        <headline>Riforma della LPP: tabella dei risultati finali</headline>
+        <description role="drol:teaser"> </description>
+        <description role="drol:catchline"></description>
+      </contentMeta>
+
+      <contentSet>
+        <inlineXML contenttype="application/xhtml+xml">
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+              <title>Riforma della LPP: tabella dei risultati finali</title>
+            </head>
+            <body>
+              <p class="lead"> </p>
+              <p class="paragraph">Riforma della LPP</p>
+<table><tbody>
+<tr><td>L'oggetto è stato respinto con il 67,13 per cento di voti contrari</td></tr>
+<tr><td>Cantoni: 0 "sì", 23 "no" </td></tr>
+<tr><td>Cantoni favorevoli al "sì": -</td></tr>
+<tr><td>Cantoni favorevoli al "no": AG, AI, AR, BE, BL, BS, FR, GE, GL, GR, JU, LU, NE, NW, OW, SG, SH, SO, SZ, TG, TI, UR, VD, VS, ZG, ZH</td></tr>
+</tbody></table>
+<table><tbody>
+<tr><td></td><td>"sì"</td><td>quota di "sì"</td><td>"no"</td><td>quota di "no"</td><td>partecipazione al voto</td></tr>
+<tr><td>Svizzera</td><td>810'569</td><td>32,87%</td><td>1'655'513</td><td>67,13%</td><td>45,04%</td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>cantone</td><td>"sì"</td><td>quota di "sì"</td><td>"no"</td><td>quota di "no"</td><td>partecipazione al voto</td></tr>
+<tr><td>Argovia</td><td>62'471</td><td>33,00%</td><td>126'812</td><td>67,00%</td><td>43,09%</td></tr>
+<tr><td>Appenzello Interno</td><td>2'042</td><td>38,03%</td><td>3'328</td><td>61,97%</td><td>44,91%</td></tr>
+<tr><td>Appenzello Esterno</td><td>6'791</td><td>34,93%</td><td>12'653</td><td>65,07%</td><td>50,60%</td></tr>
+<tr><td>Berna</td><td>104'405</td><td>30,81%</td><td>234'487</td><td>69,19%</td><td>46,53%</td></tr>
+<tr><td>Basilea Campagna</td><td>23'879</td><td>30,03%</td><td>55'636</td><td>69,97%</td><td>42,75%</td></tr>
+<tr><td>Basilea Città</td><td>16'277</td><td>33,15%</td><td>32'824</td><td>66,85%</td><td>44,18%</td></tr>
+<tr><td>Friburgo</td><td>24'618</td><td>26,34%</td><td>68'862</td><td>73,66%</td><td>44,10%</td></tr>
+<tr><td>Ginevra</td><td>29'299</td><td>26,99%</td><td>79'266</td><td>73,01%</td><td>39,88%</td></tr>
+<tr><td>Glarona</td><td>3'691</td><td>32,53%</td><td>7'656</td><td>67,47%</td><td>43,22%</td></tr>
+<tr><td>Grigioni</td><td>22'521</td><td>37,66%</td><td>37'273</td><td>62,34%</td><td>43,35%</td></tr>
+<tr><td>Giura</td><td>6'121</td><td>22,92%</td><td>20'588</td><td>77,08%</td><td>50,33%</td></tr>
+<tr><td>Lucerna</td><td>50'213</td><td>38,68%</td><td>79'591</td><td>61,32%</td><td>46,21%</td></tr>
+<tr><td>Neuchâtel</td><td>10'608</td><td>23,10%</td><td>35'320</td><td>76,90%</td><td>40,94%</td></tr>
+<tr><td>Nidvaldo</td><td>6'091</td><td>39,90%</td><td>9'174</td><td>60,10%</td><td>48,75%</td></tr>
+<tr><td>Obvaldo</td><td>5'070</td><td>37,32%</td><td>8'516</td><td>62,68%</td><td>50,62%</td></tr>
+<tr><td>San Gallo</td><td>59'984</td><td>38,10%</td><td>97'441</td><td>61,90%</td><td>48,34%</td></tr>
+<tr><td>Sciaffusa</td><td>12'113</td><td>38,03%</td><td>19'742</td><td>61,97%</td><td>63,79%</td></tr>
+<tr><td>Soletta</td><td>21'454</td><td>28,06%</td><td>54'996</td><td>71,94%</td><td>42,32%</td></tr>
+<tr><td>Svitto</td><td>18'995</td><td>35,10%</td><td>35'125</td><td>64,90%</td><td>50,51%</td></tr>
+<tr><td>Turgovia</td><td>27'777</td><td>35,49%</td><td>50'493</td><td>64,51%</td><td>44,73%</td></tr>
+<tr><td>Ticino</td><td>34'142</td><td>38,31%</td><td>54'984</td><td>61,69%</td><td>40,77%</td></tr>
+<tr><td>Uri</td><td>4'036</td><td>34,38%</td><td>7'702</td><td>65,62%</td><td>43,91%</td></tr>
+<tr><td>Vaud</td><td>58'462</td><td>27,43%</td><td>154'695</td><td>72,57%</td><td>45,73%</td></tr>
+<tr><td>Vallese</td><td>28'310</td><td>28,95%</td><td>69'478</td><td>71,05%</td><td>42,85%</td></tr>
+<tr><td>Zugo</td><td>15'528</td><td>42,87%</td><td>20'692</td><td>57,13%</td><td>46,50%</td></tr>
+<tr><td>Zurigo</td><td>155'979</td><td>35,95%</td><td>277'871</td><td>64,05%</td><td>45,57%</td></tr>
+</tbody></table>
+
+            </body>
+          </html>
+        </inlineXML>
+      </contentSet>
+    </newsItem>
+  </itemSet>
+</newsMessage>
