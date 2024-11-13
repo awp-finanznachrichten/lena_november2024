@@ -10,6 +10,10 @@ dbDisconnectAll()
 votes_metadata_CH <- votes_metadata %>%
   filter(area_ID == "CH")
 
+CATCHWORDS_DE <- votes_metadata_CH$catchword_de
+CATCHWORDS_FR <- votes_metadata_CH$catchword_fr
+CATCHWORDS_IT <- votes_metadata_CH$catchword_it
+
 #Metadaten Gemeinden und Kantone
 mydb <- connectDB(db_name="sda_votes")
 rs <- dbSendQuery(mydb, "SELECT * FROM communities_metadata")

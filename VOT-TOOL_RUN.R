@@ -1,4 +1,4 @@
-MAIN_PATH <- "C:/Users/simon/OneDrive/SDA_eidgenoessische_abstimmungen/20241124_LENA_Abstimmungen"
+MAIN_PATH <- "C:/Users/sw/OneDrive/SDA_eidgenoessische_abstimmungen/20241124_LENA_Abstimmungen"
 
 #Working Directory definieren
 setwd(MAIN_PATH)
@@ -10,10 +10,7 @@ source("./Config/load_libraries_functions.R",encoding = "UTF-8")
 source("./Config/set_constants.R",encoding = "UTF-8")
 
 #SET ADDITIONAL CONSTANTS
-VOTATION_IDS_SRG <- c(5081,5082,5083,5084)
-CATCHWORDS_DE <- c("Verkehr","Wohnen","Wohnen","Gesundheit")
-CATCHWORDS_FR <- c("Verkehr","Wohnen","Mietrecht","Gesundheit")
-CATCHWORDS_IT <- c("Verkehr","Wohnen","Wohnen","Gesundheit")
+VOTATION_IDS_SRG <- c(5093:5096)
 
 ###Load texts and metadata###
 source("./Config/load_texts_metadata.R",encoding = "UTF-8")
@@ -68,7 +65,12 @@ for (i in 1:nrow(output_overview)) {
                                          type = "results")  
 
       source("./Vot-Tool/create_news_cantonal.R", encoding="UTF-8") 
-      }  
+        }  
+      #Set output to done
+      mydb <- connectDB(db_name = "sda_votes")  
+      sql_qry <- paste0("UPDATE output_overview SET news_results = 'done' WHERE date = '",voting_date,"' AND voting_type = 'national' AND area_ID = '",output_overview$area_ID[i],"'")
+      rs <- dbSendQuery(mydb, sql_qry)
+      dbDisconnectAll() 
     }
   }  
 }  
@@ -110,7 +112,7 @@ if (output_flashes[output_flashes$votes_ID == vorlagen$id[v],]$flash_staendemehr
   dbDisconnectAll() 
   
   #Send Mail
-  Subject <- paste0("***TEST***Vorlage ",vorlagen$text[v]," am Ständemehr gescheitert")
+  Subject <- paste0("*Vorlage ",vorlagen$text[v]," am Ständemehr gescheitert")
   Body <- paste0("Liebes Keystone-SDA-Team,\n\n",
                  "Die Vorlage ",vorlagen$text[v]," ist offiziell am Ständemehr gescheitert.\n\n",
                  "Ihr findet die Flashes dazu im Mars im Input-Ordner Lena.\n\n",
@@ -123,6 +125,8 @@ if (output_flashes[output_flashes$votes_ID == vorlagen$id[v],]$flash_staendemehr
 }
   
 #####CREATE INTERMEDIATE NEWS####
+
+if (nrow(output_news_intermediate) > 0) {  
 if (Sys.time() > output_news_intermediate$timestamp[1]) {
   print("Generiere Zwischenstands-Meldungen...")
   
@@ -136,6 +140,11 @@ if (Sys.time() > output_news_intermediate$timestamp[1]) {
       texts <- replace_variables_vot(texts,
                                      language,
                                      type = "intermediate") 
+  
+      if ((language == "fr") & (votes_metadata_CH$gender[v] == "f")) {
+        texts <- str_replace_all(texts,"accepté","acceptée")
+        texts <- str_replace_all(texts,"rejeté","rejetée") 
+      }  
 
   source("./Vot-Tool/create_news_intermediate.R", encoding="UTF-8") 
   }  
@@ -143,7 +152,7 @@ if (Sys.time() > output_news_intermediate$timestamp[1]) {
   }
   
   #Send Mail
-  Subject <- paste0("***TEST***Neue Zwischenstandsmeldung erstellt")
+  Subject <- paste0("Neue Zwischenstandsmeldung erstellt")
   Body <- paste0("Liebes Keystone-SDA-Team,\n\n",
                  "Neue Zwischenstands-Meldungen mit allen ausgezählten Kantonen zu jeder Vorlage wurde erstellt.\n\n",
                  "Ihr findet die Meldungen im Mars im Input-Ordner Lena.\n\n",
@@ -157,6 +166,7 @@ if (Sys.time() > output_news_intermediate$timestamp[1]) {
   sql_qry <- paste0("UPDATE output_news_intermediate SET news_intermediate = 'done' WHERE timestamp = '",output_news_intermediate$timestamp[1],"'")
   rs <- dbSendQuery(mydb, sql_qry)
   dbDisconnectAll() 
+}
 }
 
 #####CREATE ELECTION COMPLETED REPORT####

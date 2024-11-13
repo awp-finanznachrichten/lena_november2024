@@ -71,4 +71,3 @@ ftpUpload(filename, paste0("ftp://awp-lena.sda-ats.ch/",filename),userpwd=Sys.ge
 setwd("..")
 
 
-

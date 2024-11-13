@@ -63,7 +63,7 @@ get_story_results_canton <- function() {
     no_cantons <- all_cantons %>%
       filter(result == "no")
     counted_cantons <- nrow(yes_cantons) + nrow(no_cantons)
-    
+
     ###GET EXTRAPOLATION
     extrapolation_vorlage <- extrapolations %>%
       filter(votes_ID == canton_results$votes_ID[c]) %>%
@@ -78,7 +78,7 @@ get_story_results_canton <- function() {
     }  else {
     storyboard <- c(storyboard,"Text_CH_counted_cantons_several")  
     }  
-    
+ 
     if (votes_metadata_CH$staendemehr[c] == "yes") {
     if (sum(yes_cantons$staende_count) > 11.5) {
     storyboard <- c(storyboard,"Text_CH_standemehr_success")  

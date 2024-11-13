@@ -40,6 +40,12 @@ replace_variables_vot <- function(texts,
     texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#yes_absolut",gsub("[.]",",",format(canton_results$share_yes_votes[count],big.mark = "'")))
     texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#no_absolut",gsub("[.]",",",format(canton_results$share_no_votes[count],big.mark = "'")))
     texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#voter_share",gsub("[.]",",",format(canton_results$voter_participation[count],nsmall=2)))
+    
+    if ((language == "fr") & (votes_metadata_CH$gender[count] == "f")) {
+      texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"accepté","acceptée")
+      texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"rejeté","rejetée") 
+    }  
+    
     count <- count+1
     }
 
@@ -63,6 +69,7 @@ replace_variables_vot <- function(texts,
       }  
       counted_cantons <- nrow(yes_cantons) + nrow(no_cantons)
       
+      texts <- str_replace_all(texts,"#cantons_counted",toString(counted_cantons))
       
       ###GET EXTRAPOLATION
       extrapolation_vorlage <- extrapolations %>%
@@ -77,8 +84,20 @@ replace_variables_vot <- function(texts,
       if (is.na(extrapolation_vorlage$share_votes_yes) == FALSE) {
       texts[i:(i+3)] <- str_replace_all(texts[i:(i+3)],"#hochrechnung_yes",toString(extrapolation_vorlage$share_votes_yes))
       texts[i:(i+3)] <- str_replace_all(texts[i:(i+3)],"#hochrechnung_no",toString(extrapolation_vorlage$share_votes_no))
-      texts[i:(i+3)] <- str_replace_all(texts[i:(i+3)],"#Hochrechnung_time", format(strptime(extrapolation_vorlage$last_update, "%Y-%m-%d %H:%M:%S"),"%H:%M"))
+      if (language == "fr") {
+        texts[i:(i+3)] <- str_replace_all(texts[i:(i+3)],"#Hochrechnung_time", format(strptime(extrapolation_vorlage$last_update, "%Y-%m-%d %H:%M:%S"),"%Hh%M"))
+      } else {
+        texts[i:(i+3)] <- str_replace_all(texts[i:(i+3)],"#Hochrechnung_time", format(strptime(extrapolation_vorlage$last_update, "%Y-%m-%d %H:%M:%S"),"%H:%M"))
+      }                         
+        
+        
       }
+      
+      if ((language == "fr") & (votes_metadata_CH$gender[count] == "f")) {
+        texts[i:(i+3)] <- str_replace_all(texts[i:(i+3)],"accepté","acceptée")
+        texts[i:(i+3)] <- str_replace_all(texts[i:(i+3)],"rejeté","rejetée") 
+      }  
+      
       count <- count+1
     }
 
@@ -136,7 +155,12 @@ replace_variables_vot <- function(texts,
       if (is.na(extrapolation_vorlage$share_votes_yes) == FALSE) {
         texts <- str_replace_all(texts,"#hochrechnung_yes",toString(extrapolation_vorlage$share_votes_yes))
         texts <- str_replace_all(texts,"#hochrechnung_no",toString(extrapolation_vorlage$share_votes_no))
-        texts <- str_replace_all(texts,"#Hochrechnung_time", format(strptime(extrapolation_vorlage$last_update, "%Y-%m-%d %H:%M:%S"),"%H:%M"))
+        
+        if (language == "fr") {
+          texts <- str_replace_all(texts,"#Hochrechnung_time", format(strptime(extrapolation_vorlage$last_update, "%Y-%m-%d %H:%M:%S"),"%Hh%M"))
+        } else {
+          texts <- str_replace_all(texts,"#Hochrechnung_time", format(strptime(extrapolation_vorlage$last_update, "%Y-%m-%d %H:%M:%S"),"%H:%M"))
+        }   
       }
   }
   

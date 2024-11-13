@@ -1,7 +1,7 @@
 #Welche Abstimmung?
 abstimmung_date <- "November2024"
-voting_date <- "2024-09-22"
-date_voting <- "20240922"
+voting_date <- "2024-11-24"
+date_voting <- "20241124"
 
 #Save texts? Simulation? Default FALSE
 save_texts <- FALSE
@@ -12,7 +12,7 @@ simulation <- FALSE
 DEFAULT_MAILS <- "robot-notification@awp.ch"
 
 #JSON Feeds
-FEED_NATIONAL <- "https://app-prod-static-voteinfo.s3.eu-central-1.amazonaws.com/v1/ogd/sd-t-17-02-20240922-eidgAbstimmung.json"
+FEED_NATIONAL <- "https://app-prod-static-voteinfo.s3.eu-central-1.amazonaws.com/v1/ogd/sd-t-17-02-20241124-eidgAbstimmung.json"
 FEED_CANTONAL <- "https://app-prod-static-voteinfo.s3.eu-central-1.amazonaws.com/v1/ogd/sd-t-17-02-20240922-kantAbstimmung.json"
 
 #Spezialfälle?

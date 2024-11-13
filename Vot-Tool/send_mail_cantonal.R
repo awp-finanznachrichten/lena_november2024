@@ -8,7 +8,7 @@ for (c in 1:nrow(canton_results)) {
 }  
 
 #Send Mail
-Subject <- paste0("***TEST***Kanton ",canton_results$area_ID[1],": Abstimmungsergebnisse komplett")
+Subject <- paste0("Kanton ",canton_results$area_ID[1],": Abstimmungsergebnisse komplett")
 Body <- paste0("Liebes Keystone-SDA-Team,\n\n",
                "Die Ergebnisse zu den eidgenössischen Abstimmungen vom Kanton ",canton_results$area_ID[1]," sind komplett.\n\n",
                text_results,

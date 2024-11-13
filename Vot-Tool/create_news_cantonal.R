@@ -37,11 +37,10 @@ text <- paste0(text,"<table><tbody>\n",
 }  
 
 text <- paste0(text,'<p class="paragraph">',texts[n+3],"</p>\n") 
-
+text <- paste0(text,"<table><tbody>\n")
 for (m in seq(6+3*nrow(vorlagen),length(texts)-2,4)) {
 #Table
-text <- paste0(text,"<table><tbody>\n",
-                 "<tr><td>",texts[m],
+text <- paste0(text,"<tr><td>",texts[m],
                  ifelse(nchar(texts[m+1]) > 0,
                         paste0(", ",texts[m+1]),
                         ""),
@@ -51,9 +50,9 @@ text <- paste0(text,"<table><tbody>\n",
                ifelse(nchar(texts[m+3]) > 0,
                       paste0(", ",texts[m+3]),
                       ""),
-              "\n</td></tr></tbody></table>\n")  
+              "\n</td></tr>")  
 }  
-
+text <- paste0(text,"</tbody></table>\n")
 text <- paste0(text,ifelse(nchar(texts[length(texts)-1]) > 0,
                            paste0('<p class="paragraph">',texts[length(texts)-1],"</p>\n"),
                                   ""))
@@ -100,9 +99,5 @@ ftpUpload(filename, paste0("ftp://awp-lena.sda-ats.ch/",filename),userpwd=Sys.ge
 
 setwd("..")
 
-#Set mail output to done
-mydb <- connectDB(db_name = "sda_votes")  
-sql_qry <- paste0("UPDATE output_overview SET news_results = 'done' WHERE date = '",voting_date,"' AND voting_type = 'national' AND area_ID = '",output_overview$area_ID[i],"'")
-rs <- dbSendQuery(mydb, sql_qry)
-dbDisconnectAll() 
+
 

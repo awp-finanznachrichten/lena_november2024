@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<newsMessage xmlns="http://iptc.org/std/nar/2006-10-01/">
+  <header>
+    <sent>2024-11-13T16:07:47+02:00</sent>
+  </header>
+
+  <itemSet>
+    <newsItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://iptc.org/std/nar/2006-10-01/" standard="NewsML-G2" standardversion="2.28" conformance="power" xml:lang="it" guid="urn:newsml:keystone-sda.ch:20241113:20241113160747687370906235851" version="1">
+      <catalogRef href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_34.xml"/>
+      <catalogRef href="http://www.keystone-sda.ch/NewsML_G2/SDA-G2-Catalog.xml"/>
+
+      <itemMeta>
+        <itemClass qcode="ninat:text"/>
+        <provider qcode="nprov:KSDA">
+           <name>sda</name>
+        </provider>
+        <versionCreated>2024-11-13T16:07:47+02:00</versionCreated>
+        <pubStatus qcode="stat:withheld"/>
+        <generator versioninfo="0.3.4">XML::NewsML_G2</generator>
+        <service qcode="sdasvc:bsi"></service>
+        <edNote role="sdanote:note">Questa notizia è stata generata automaticamente in base ai dati del canton di Berna e verificata prima della pubblicazione.</edNote>
+        <edNote role="sdalena:memo">DIES IST EIN TEST</edNote>
+        
+      </itemMeta>
+
+      <contentMeta>
+        <urgency>2</urgency>
+        <contentCreated>2024-11-13T16:07:47+02:00</contentCreated>
+        <creator>
+          <name>sda-robot</name>
+        </creator>
+        <altId>687370906235851</altId>
+        <dateline>BERNA</dateline>
+        <language tag="it"/>
+        <genre qcode="sdagenre:RES">
+        </genre>
+
+        <!--storytypes-->
+        <subject type="cpnat:abstract" qcode="sdastorytype:tble"></subject>
+        
+        <!--media topics-->
+        <subject type="cpnat:abstract" qcode="sdamarschannel:POL"></subject>
+<subject type="cpnat:abstract" qcode="sdamarschannel:VOT"></subject>
+
+        <!--locations-->
+        <located type="loctype:city" qcode="sdamarsgeo:BRN">
+<name>Bern</name>
+</located>
+  
+        <slugline>vot BE</slugline>
+        <headline>Risultati dal canton Berna</headline>
+        <description role="drol:teaser">I risultati dettagliati della votazioni federali nel canton Berna</description>
+        <description role="drol:catchline"></description>
+      </contentMeta>
+
+      <contentSet>
+        <inlineXML contenttype="application/xhtml+xml">
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+              <title>Risultati dal canton Berna</title>
+            </head>
+            <body>
+              <p class="lead">I risultati dettagliati della votazioni federali nel canton Berna</p>
+              <p class="paragraph">Fase di potenziamento delle strade nazionali: NO</p>
+<table><tbody>
+<tr><td>Quota di "no": 60,00 per cento (60'000 voti)</td></tr>
+<tr><td>Partecipazione al voto: 46,34 per cento</td></tr>
+</tbody></table>
+<p class="paragraph">Diritto di locazione sublocazione: NO</p>
+<table><tbody>
+<tr><td>Quota di "no": 66,67 per cento (808'912 voti)</td></tr>
+<tr><td>Partecipazione al voto: 45,50 per cento</td></tr>
+</tbody></table>
+<p class="paragraph">Diritto di locazione disdetta per bisogno personale: SÌ</p>
+<table><tbody>
+<tr><td>Quota di "sì": 72,10 per cento (72'000 voti)</td></tr>
+<tr><td>Partecipazione al voto: 54,20 per cento</td></tr>
+</tbody></table>
+<p class="paragraph">Finanziamento uniforme delle prestazioni: SÌ</p>
+<table><tbody>
+<tr><td>Quota di "sì": 60,00 per cento (600'000 voti)</td></tr>
+<tr><td>Partecipazione al voto: 33,00 per cento</td></tr>
+</tbody></table>
+<p class="paragraph">Risultato intermedio di tutti gli oggetti:</p>
+<table><tbody>
+<tr><td>Fase di potenziamento delle strade nazionali: 3 di 26 cantoni sono stati scrutinati, stando alle proiezioni della SSR (16:30) accolto con il 51 per cento di "sì"
+</td></tr><tr><td>Diritto di locazione sublocazione: 3 di 26 cantoni sono stati scrutinati, stando alle proiezioni della SSR (16:30) accolto con il 54 per cento di "sì"
+</td></tr><tr><td>Diritto di locazione disdetta per bisogno personale: 3 di 26 cantoni sono stati scrutinati, stando alle proiezioni della SSR (16:30) accolto con il 51 per cento di "sì"
+</td></tr><tr><td>Finanziamento uniforme delle prestazioni: 3 di 26 cantoni sono stati scrutinati, stando alle proiezioni della SSR (16:30) accolto con il 58 per cento di "sì"
+</td></tr></tbody></table>
+
+            </body>
+          </html>
+        </inlineXML>
+      </contentSet>
+    </newsItem>
+  </itemSet>
+</newsMessage>

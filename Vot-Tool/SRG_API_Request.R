@@ -17,11 +17,42 @@ data <- GET(link)
 content <- read_xml(data)
 timestamp <- strptime(xml_text(xml_find_all(content,".//LastUpdate")),format = '%Y-%m-%dT%H:%M:%S')
 
-
 if (length(timestamp) > 0) { 
   if ((timestamp != current_trend$last_update) & (as.Date(timestamp) == Sys.Date())) {
 trend <- xml_text(xml_find_all(content,".//ResultCondition"))
-if (trend == "angenommen" || trend == "abgelehnt") {
+
+if (length(trend) == 0) {
+  trend <- "Kein Trend"
+  print(paste0("No trend yet for ",vorlagen$text[v]))
+  #Write in DB
+  mydb <- connectDB(db_name = "sda_votes")
+  sql_qry <- paste0(
+    "UPDATE extrapolations SET ",
+    " result = '",
+    trend,
+    "'",
+    ", last_update = '",
+    toString(timestamp),
+    "'",
+    " WHERE votes_ID = '",
+    vorlagen$id[v],
+    "' AND type = 'trend'"
+  )
+  rs <- dbSendQuery(mydb, sql_qry)
+  dbDisconnectAll()
+  
+  #Send Mail
+  Subject <- paste0("Keine Trend-Vorhersage für ",vorlagen$text[v]," möglich!")
+  Body <- paste0("Liebes Keystone-SDA-Team,\n\n",
+                 "Es gibt noch keinen Trend der SRG zu der Vorlage ",vorlagen$text[v],".\n\n",
+                 "Trend: ",trend,"\n",
+                 "Veröffentlichungszeitpunkt: ",timestamp,"\n\n",
+                 "Liebe Grüsse\n\nLENA")
+  send_notification(Subject,
+                    Body,
+                    paste0(DEFAULT_MAILS))  
+  
+} else if (trend == "angenommen" || trend == "abgelehnt") {
 print(paste0("New trend found for ",vorlagen$text[v]))
 #Write in DB
 mydb <- connectDB(db_name = "sda_votes")
@@ -41,7 +72,7 @@ rs <- dbSendQuery(mydb, sql_qry)
 dbDisconnectAll()
 
 #Send Mail
-Subject <- paste0("***TEST***Neuer SRG-Trend zur ",vorlagen$text[v]," veröffentlicht!")
+Subject <- paste0("Neuer SRG-Trend zur ",vorlagen$text[v]," veröffentlicht!")
 Body <- paste0("Liebes Keystone-SDA-Team,\n\n",
                "Die SRG hat einen Trend zur ",vorlagen$text[v]," veröffentlicht.\n\n",
                "Trend: ",trend,"\n",
@@ -60,6 +91,12 @@ texts <- get_texts_vot(storyboard,
 texts <- replace_variables_vot(texts,
                            language,
                            type = "trend")
+
+if ((language == "fr") & (votes_metadata_CH$gender[v] == "f")) {
+texts <- str_replace_all(texts,"accepté","acceptée")
+texts <- str_replace_all(texts,"rejeté","rejetée") 
+}  
+
 source("./Vot-Tool/create_flash_trend.R", encoding="UTF-8") 
 }
 }
@@ -108,7 +145,7 @@ if (length(timestamp) > 0) {
   dbDisconnectAll()
   
   #Send Mail
-  Subject <- paste0("***TEST***Neue SRG-Hochrechnung zur ",vorlagen$text[v]," veröffentlicht!")
+  Subject <- paste0("Neue SRG-Hochrechnung zur ",vorlagen$text[v]," veröffentlicht!")
   Body <- paste0("Liebes Keystone-SDA-Team,\n\n",
                  "Die SRG hat eine Hochrechnung zur ",vorlagen$text[v]," veröffentlicht.\n\n",
                  "Ergebnis: ",hochrechnung,"\n",
@@ -176,7 +213,7 @@ if (length(timestamp) > 0) {
     dbDisconnectAll()
     
     #Send Mail
-    Subject <- paste0("***TEST***Zweite SRG-Hochrechnung zur ",vorlagen$text[v]," veröffentlicht!")
+    Subject <- paste0("Zweite SRG-Hochrechnung zur ",vorlagen$text[v]," veröffentlicht!")
     Body <- paste0("Liebes Keystone-SDA-Team,\n\n",
                    "Die SRG hat eine zweite Hochrechnung zur ",vorlagen$text[v]," veröffentlicht.\n\n",
                    "Ergebnis: ",hochrechnung,"\n",
@@ -245,7 +282,7 @@ if (length(timestamp) > 0) {
     dbDisconnectAll()
     
     #Send Mail
-    Subject <- paste0("***TEST***Dritte SRG-Hochrechnung zur ",vorlagen$text[v]," veröffentlicht!")
+    Subject <- paste0("Dritte SRG-Hochrechnung zur ",vorlagen$text[v]," veröffentlicht!")
     Body <- paste0("Liebes Keystone-SDA-Team,\n\n",
                    "Die SRG hat eine dritte Hochrechnung zur ",vorlagen$text[v]," veröffentlicht.\n\n",
                    "Ergebnis: ",hochrechnung,"\n",
