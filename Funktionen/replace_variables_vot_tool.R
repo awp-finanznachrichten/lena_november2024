@@ -24,6 +24,9 @@ replace_variables_vot <- function(texts,
     texts <- str_replace_all(texts,"#Kanton_d",canton_metadata$area_name_de)
     texts <- str_replace_all(texts,"#Kanton_f",canton_metadata$area_name_fr)
     texts <- str_replace_all(texts,"#Kanton_i",canton_metadata$area_name_it)
+    texts <- str_replace_all(texts,"#Hauptort_d",canton_metadata$hauptort_de)
+    texts <- str_replace_all(texts,"#Hauptort_f",canton_metadata$hauptort_de)
+    texts <- str_replace_all(texts,"#Hauptort_i",canton_metadata$hauptort_de)
 
     count <- 1
     for (i in seq(5,(4+3*nrow(vorlagen)),3)) {
@@ -37,15 +40,19 @@ replace_variables_vot <- function(texts,
 
     texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#yes_percentage",gsub("[.]",",",format(canton_results$share_yes_percentage[count],nsmall=2)))
     texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#no_percentage",gsub("[.]",",",format(canton_results$share_no_percentage[count],nsmall=2)))
-    texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#yes_absolut",gsub("[.]",",",format(canton_results$share_yes_votes[count],big.mark = "'")))
-    texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#no_absolut",gsub("[.]",",",format(canton_results$share_no_votes[count],big.mark = "'")))
+    texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#yes_absolut",ifelse(canton_results$share_yes_votes[count]>9999,
+                                                                           format(canton_results$share_yes_votes[count],big.mark = "'"),
+                                                                           toString(canton_results$share_yes_votes[count])))
+    texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#no_absolut",ifelse(canton_results$share_no_votes[count]>9999,
+                                                                          format(canton_results$share_no_votes[count],big.mark = "'"),
+                                                                          toString(canton_results$share_no_votes[count])))
     texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"#voter_share",gsub("[.]",",",format(canton_results$voter_participation[count],nsmall=2)))
     
     if ((language == "fr") & (votes_metadata_CH$gender[count] == "f")) {
       texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"accepté","acceptée")
       texts[i:(i+2)] <- str_replace_all(texts[i:(i+2)],"rejeté","rejetée") 
     }  
-    
+
     count <- count+1
     }
 
@@ -145,6 +152,9 @@ replace_variables_vot <- function(texts,
       texts <- str_replace_all(texts,"#Name_Vorlage_d",gsub(":","",vorlagen$text[v]))
       texts <- str_replace_all(texts,"#Name_Vorlage_f",gsub(":","",vorlagen_fr$text[v]))
       texts <- str_replace_all(texts,"#Name_Vorlage_i",gsub(":","",vorlagen_it$text[v]))
+      texts <- str_replace_all(texts,"#Topic_Vorlage_d",CATCHWORDS_DE[v])
+      texts <- str_replace_all(texts,"#Topic_Vorlage_f",CATCHWORDS_FR[v])
+      texts <- str_replace_all(texts,"#Topic_Vorlage_i",CATCHWORDS_IT[v])
 
       texts <- str_replace_all(texts,"#cantons_counted",toString(counted_cantons))
       texts <- str_replace_all(texts,"#staende_yes",toString(staende_yes))
@@ -201,6 +211,9 @@ replace_variables_vot <- function(texts,
     texts <- str_replace_all(texts,"#Name_Vorlage_d",gsub(":","",vorlagen$text[v]))
     texts <- str_replace_all(texts,"#Name_Vorlage_f",gsub(":","",vorlagen_fr$text[v]))
     texts <- str_replace_all(texts,"#Name_Vorlage_i",gsub(":","",vorlagen_it$text[v]))
+    texts <- str_replace_all(texts,"#Topic_Vorlage_d",CATCHWORDS_DE[v])
+    texts <- str_replace_all(texts,"#Topic_Vorlage_f",CATCHWORDS_FR[v])
+    texts <- str_replace_all(texts,"#Topic_Vorlage_i",CATCHWORDS_IT[v])
     
     texts <- str_replace_all(texts,"#result_yes",result_yes)
     texts <- str_replace_all(texts,"#result_no",result_no)

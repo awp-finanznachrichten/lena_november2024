@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<newsMessage xmlns="http://iptc.org/std/nar/2006-10-01/">
+  <header>
+    <sent>2024-11-14T16:59:33+02:00</sent>
+  </header>
+
+  <itemSet>
+    <newsItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://iptc.org/std/nar/2006-10-01/" standard="NewsML-G2" standardversion="2.28" conformance="power" xml:lang="de" guid="urn:newsml:keystone-sda.ch:20241114:20241114165933999210846969139" version="1">
+      <catalogRef href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_34.xml"/>
+      <catalogRef href="http://www.keystone-sda.ch/NewsML_G2/SDA-G2-Catalog.xml"/>
+
+      <itemMeta>
+        <itemClass qcode="ninat:text"/>
+        <provider qcode="nprov:KSDA">
+           <name>sda</name>
+        </provider>
+        <versionCreated>2024-11-14T16:59:33+02:00</versionCreated>
+        <pubStatus qcode="stat:withheld"/>
+        <generator versioninfo="0.3.4">XML::NewsML_G2</generator>
+        <service qcode="sdasvc:bsd"></service>
+        <edNote role="sdanote:note">Diese Meldung wurde automatisch auf Grundlage der aktuellsten Daten vom Kanton Bern erstellt und vor der Publikation überprüft.</edNote>
+        <edNote role="sdalena:memo">DIES IST EIN TEST</edNote>
+        
+      </itemMeta>
+
+      <contentMeta>
+        <urgency>3</urgency>
+        <contentCreated>2024-11-14T16:59:33+02:00</contentCreated>
+        <creator>
+          <name>sda-robot</name>
+        </creator>
+        <altId>999210846969139</altId>
+        <dateline>Bern</dateline>
+        <language tag="de"/>
+        <genre qcode="sdagenre:RES">
+        </genre>
+
+        <!--storytypes-->
+        <subject type="cpnat:abstract" qcode="sdastorytype:tble"></subject>
+        
+        <!--media topics-->
+        <subject type="cpnat:abstract" qcode="sdamarschannel:POL"></subject>
+<subject type="cpnat:abstract" qcode="sdamarschannel:VOT"></subject>
+
+        <!--locations-->
+        <located type="loctype:city" qcode="sdamarsgeo:BRN">
+<name>Bern</name>
+</located>
+  
+        <slugline>Eidg. Abstimmungen</slugline>
+        <headline>Ergebnisse aus dem Kanton Bern</headline>
+        <description role="drol:teaser">Die detaillierten Ergebnisse der Eidgenössischen Abstimmungen aus dem Kanton Bern (BE)</description>
+        <description role="drol:catchline"></description>
+      </contentMeta>
+
+      <contentSet>
+        <inlineXML contenttype="application/xhtml+xml">
+          <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+              <title>Ergebnisse aus dem Kanton Bern</title>
+            </head>
+            <body>
+              <p class="lead">Die detaillierten Ergebnisse der Eidgenössischen Abstimmungen aus dem Kanton Bern (BE)</p>
+              <p class="paragraph">Ausbau Autobahnen: NEIN</p>
+<table><tbody>
+<tr><td>Nein-Anteil: 60,00 Prozent (60'000 Stimmen)</td></tr>
+<tr><td>Stimmbeteiligung: 46,34 Prozent</td></tr>
+</tbody></table>
+<p class="paragraph">Revision Mietrecht (Untermiete): NEIN</p>
+<table><tbody>
+<tr><td>Nein-Anteil: 66,67 Prozent (808'912 Stimmen)</td></tr>
+<tr><td>Stimmbeteiligung: 45,50 Prozent</td></tr>
+</tbody></table>
+<p class="paragraph">Revision Mietrecht (Kündigung Eigenbedarf): JA</p>
+<table><tbody>
+<tr><td>Ja-Anteil: 72,10 Prozent (72'000 Stimmen)</td></tr>
+<tr><td>Stimmbeteiligung: 54,20 Prozent</td></tr>
+</tbody></table>
+<p class="paragraph">Einheitliche Finanzierung Gesundheitswesen: JA</p>
+<table><tbody>
+<tr><td>Ja-Anteil: 60,00 Prozent (600'000 Stimmen)</td></tr>
+<tr><td>Stimmbeteiligung: 33,00 Prozent</td></tr>
+</tbody></table>
+<p class="paragraph">Zwischenstand aller Vorlagen:</p>
+<table><tbody>
+<tr><td>Ausbau Autobahnen: 3 von 26 Kantonen ausgezählt, gemäss SRG-Hochrechnung (16:30 Uhr) mit 51 Prozent Ja-Stimmen angenommen
+</td></tr><tr><td>Revision Mietrecht (Untermiete): 3 von 26 Kantonen ausgezählt, gemäss SRG-Hochrechnung (16:30 Uhr) mit 54 Prozent Ja-Stimmen angenommen
+</td></tr><tr><td>Revision Mietrecht (Kündigung Eigenbedarf): 3 von 26 Kantonen ausgezählt, gemäss SRG-Hochrechnung (16:30 Uhr) mit 51 Prozent Ja-Stimmen angenommen
+</td></tr><tr><td>Einheitliche Finanzierung Gesundheitswesen: 3 von 26 Kantonen ausgezählt, gemäss SRG-Hochrechnung (16:30 Uhr) mit 58 Prozent Ja-Stimmen angenommen
+</td></tr></tbody></table>
+
+            </body>
+          </html>
+        </inlineXML>
+      </contentSet>
+    </newsItem>
+  </itemSet>
+</newsMessage>

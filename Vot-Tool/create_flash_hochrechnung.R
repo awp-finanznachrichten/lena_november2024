@@ -64,7 +64,7 @@ setwd("./Output_Mars")
 filename <- paste0(format(Sys.Date(),"%Y%m%d"),"_",vorlagen$id[v],"_flash_hochrechnung_",language,".xml")
 cat(vorlage, file = (con <- file(filename, "w", encoding="UTF-8"))); close(con)
 
-Sys.sleep(5)
+#Sys.sleep(5)
 ###FTP-Upload
 ftpUpload(filename, paste0("ftp://awp-lena.sda-ats.ch/",filename),userpwd=Sys.getenv("ftp_sda"))
 

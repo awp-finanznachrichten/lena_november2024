@@ -45,10 +45,10 @@ vorlagen_all <- rbind(vorlagen_all,vorlagen_it)
 
 
 #Load Folders
-folder_uebersicht <- readRDS("./Preparations/folder_uebersicht.RDS")
-folder_gemeindeebene <- readRDS("./Preparations/folder_gemeindeebene.RDS")
-folder_kantonsebene <- readRDS("./Preparations/folder_kantonsebene.RDS")
-folder_kantone <- readRDS("./Preparations/folder_kantone.RDS")
+folder_uebersicht <- readRDS("./Preparations/folders/folder_uebersicht.RDS")
+folder_gemeindeebene <- readRDS("./Preparations/folders/folder_gemeindeebene.RDS")
+folder_kantonsebene <- readRDS("./Preparations/folders/folder_kantonsebene.RDS")
+folder_kantone <- readRDS("./Preparations/folders/folder_kantone.RDS")
 
 
 ###CREATE CHARTS OVERVIEWS AND SWISS MAPS GEMEINDEN UND KANTONE###
@@ -139,17 +139,16 @@ grafiken_uebersicht <- grafiken_uebersicht[-1,]
 library(xlsx)
 write.xlsx(grafiken_uebersicht,"./Data/metadaten_grafiken.xlsx",row.names = FALSE)
 
-
 #Enter Data in DB
 mydb <- connectDB(db_name = "sda_votes")
 for (i in 1:nrow(grafiken_uebersicht)) {
-    sql_qry <- paste0("INSERT IGNORE INTO datawrapper_codes(Typ,Vorlage,Sprache,ID,date) VALUES ",
-                      "('",grafiken_uebersicht$Typ[i],"','",
-                      grafiken_uebersicht$Vorlage[i],"','",
-                      grafiken_uebersicht$Sprache[i],"','",
-                      grafiken_uebersicht$ID[i],"','",
-                      voting_date,"')")
-    rs <- dbSendQuery(mydb, sql_qry)
+  sql_qry <- paste0("INSERT IGNORE INTO datawrapper_codes(Typ,Vorlage,Sprache,ID,date) VALUES ",
+                    "('",grafiken_uebersicht$Typ[i],"','",
+                    grafiken_uebersicht$Vorlage[i],"','",
+                    grafiken_uebersicht$Sprache[i],"','",
+                    grafiken_uebersicht$ID[i],"','",
+                    voting_date,"')")
+  rs <- dbSendQuery(mydb, sql_qry)
 }
 
 dbDisconnectAll()
@@ -244,3 +243,17 @@ for (v in 1:length(vorlagen_short)) {
 grafiken_uebersicht <- grafiken_uebersicht[-1,]
 library(xlsx)
 write.xlsx(grafiken_uebersicht,"./Data/metadaten_grafiken_kantonskarten.xlsx",row.names = FALSE)
+
+#Enter Data in DB
+mydb <- connectDB(db_name = "sda_votes")
+for (i in 1:nrow(grafiken_uebersicht)) {
+  sql_qry <- paste0("INSERT IGNORE INTO datawrapper_codes(Typ,Vorlage,Sprache,ID,date) VALUES ",
+                    "('",grafiken_uebersicht$Typ[i],"','",
+                    grafiken_uebersicht$Vorlage[i],"','",
+                    grafiken_uebersicht$Sprache[i],"','",
+                    grafiken_uebersicht$ID[i],"','",
+                    voting_date,"')")
+  rs <- dbSendQuery(mydb, sql_qry)
+}
+
+dbDisconnectAll()

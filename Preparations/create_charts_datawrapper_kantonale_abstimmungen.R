@@ -47,8 +47,8 @@ vorlagen_all <- rbind(vorlagen,vorlagen_fr)
 vorlagen_all <- rbind(vorlagen_all,vorlagen_it)
 
 #Load Folders
-folder_kantonal <- readRDS("./Preparations/folder_kantonal.RDS")
-folder_kantone_uebersicht <- readRDS("./Preparations/folder_kantone_uebersicht.RDS")
+folder_kantonal <- readRDS("./Preparations/folders/folder_kantonal.RDS")
+folder_kantone_uebersicht <- readRDS("./Preparations/folders/folder_kantone_uebersicht.RDS")
 
 ###Kantonale Abstimmungen
 grafiken_uebersicht <- data.frame("Typ","Vorlage","Titel","Sprache","ID","Link","Iframe","Script")
@@ -562,7 +562,6 @@ for (v in 1:nrow(vorlage_titel)) {
 grafiken_uebersicht <- grafiken_uebersicht[-1,]
 library(xlsx)
 write.xlsx(grafiken_uebersicht,"./Data/metadaten_grafiken_kantonal.xlsx",row.names = FALSE)
-
 
 #Enter Data in DB
 mydb <- connectDB(db_name = "sda_votes")

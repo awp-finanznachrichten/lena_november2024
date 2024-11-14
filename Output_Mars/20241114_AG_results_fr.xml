@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <newsMessage xmlns="http://iptc.org/std/nar/2006-10-01/">
   <header>
-    <sent>2024-11-13T16:07:41+02:00</sent>
+    <sent>2024-11-14T15:27:02+02:00</sent>
   </header>
 
   <itemSet>
-    <newsItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://iptc.org/std/nar/2006-10-01/" standard="NewsML-G2" standardversion="2.28" conformance="power" xml:lang="fr" guid="urn:newsml:keystone-sda.ch:20241113:20241113160741760952195156945" version="1">
+    <newsItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://iptc.org/std/nar/2006-10-01/" standard="NewsML-G2" standardversion="2.28" conformance="power" xml:lang="fr" guid="urn:newsml:keystone-sda.ch:20241114:20241114152702540083672276180" version="1">
       <catalogRef href="http://www.iptc.org/std/catalog/catalog.IPTC-G2-Standards_34.xml"/>
       <catalogRef href="http://www.keystone-sda.ch/NewsML_G2/SDA-G2-Catalog.xml"/>
 
@@ -14,22 +14,22 @@
         <provider qcode="nprov:KSDA">
            <name>sda</name>
         </provider>
-        <versionCreated>2024-11-13T16:07:41+02:00</versionCreated>
+        <versionCreated>2024-11-14T15:27:02+02:00</versionCreated>
         <pubStatus qcode="stat:withheld"/>
         <generator versioninfo="0.3.4">XML::NewsML_G2</generator>
         <service qcode="sdasvc:bsf"></service>
-        <edNote role="sdanote:note">Cette dépêche a été générée automatiquement sur la base des données du canton de Berne. Elle a été relue avant sa publication.</edNote>
+        <edNote role="sdanote:note">Cette dépêche a été générée automatiquement sur la base des données du canton d'Argovie. Elle a été relue avant sa publication.</edNote>
         <edNote role="sdalena:memo">DIES IST EIN TEST</edNote>
         
       </itemMeta>
 
       <contentMeta>
         <urgency>2</urgency>
-        <contentCreated>2024-11-13T16:07:41+02:00</contentCreated>
+        <contentCreated>2024-11-14T15:27:02+02:00</contentCreated>
         <creator>
           <name>sda-robot</name>
         </creator>
-        <altId>760952195156945</altId>
+        <altId>540083672276180</altId>
         <dateline>Berne</dateline>
         <language tag="fr"/>
         <genre qcode="sdagenre:RES">
@@ -43,13 +43,13 @@
 <subject type="cpnat:abstract" qcode="sdamarschannel:VOT"></subject>
 
         <!--locations-->
-        <located type="loctype:city" qcode="sdamarsgeo:BRN">
-<name>Bern</name>
+        <located type="loctype:city" qcode="sdamarsgeo:AAR">
+<name>Aarau</name>
 </located>
   
-        <slugline>vot BE</slugline>
-        <headline>Résultats du canton de Berne</headline>
-        <description role="drol:teaser">Les résultats des votations fédérales dans le canton de Berne</description>
+        <slugline>vot AG</slugline>
+        <headline>Résultats du canton d'Argovie</headline>
+        <description role="drol:teaser">Les résultats des votations fédérales dans le canton d'Argovie</description>
         <description role="drol:catchline"></description>
       </contentMeta>
 
@@ -57,35 +57,35 @@
         <inlineXML contenttype="application/xhtml+xml">
           <html xmlns="http://www.w3.org/1999/xhtml">
             <head>
-              <title>Résultats du canton de Berne</title>
+              <title>Résultats du canton d'Argovie</title>
             </head>
             <body>
-              <p class="lead">Les résultats des votations fédérales dans le canton de Berne</p>
-              <p class="paragraph">Extension des autoroutes: NON</p>
+              <p class="lead">Les résultats des votations fédérales dans le canton d'Argovie</p>
+              <p class="paragraph">Extension des autoroutes: OUI</p>
+<table><tbody>
+<tr><td>Pourcentage de oui: 60,00 % (6000 oui)</td></tr>
+<tr><td>Taux de participation: 45,00 %</td></tr>
+</tbody></table>
+<p class="paragraph">Révision du droit de bail (sous-location): OUI</p>
+<table><tbody>
+<tr><td>Pourcentage de oui: 60,00 % (6000 oui)</td></tr>
+<tr><td>Taux de participation: 46,76 %</td></tr>
+</tbody></table>
+<p class="paragraph">Révision du droit de bail (propriétaires): NON</p>
+<table><tbody>
+<tr><td>Pourcentage de non: 64,68 % (65'000 non)</td></tr>
+<tr><td>Taux de participation: 52,12 %</td></tr>
+</tbody></table>
+<p class="paragraph">Financement uniforme des soins (EFAS): NON</p>
 <table><tbody>
 <tr><td>Pourcentage de non: 60,00 % (60'000 non)</td></tr>
-<tr><td>Taux de participation: 46,34 %</td></tr>
-</tbody></table>
-<p class="paragraph">Assouplissement du droit de bail dans le domaine de la sous-location: NON</p>
-<table><tbody>
-<tr><td>Pourcentage de non: 66,67 % (808'912 non)</td></tr>
-<tr><td>Taux de participation: 45,50 %</td></tr>
-</tbody></table>
-<p class="paragraph">Assouplissement du droit de bail en faveur des propriétaires: OUI</p>
-<table><tbody>
-<tr><td>Pourcentage de oui: 72,10 % (72'000 oui)</td></tr>
-<tr><td>Taux de participation: 54,20 %</td></tr>
-</tbody></table>
-<p class="paragraph">Financement uniforme des soins (EFAS): OUI</p>
-<table><tbody>
-<tr><td>Pourcentage de oui: 60,00 % (600'000 oui)</td></tr>
-<tr><td>Taux de participation: 33,00 %</td></tr>
+<tr><td>Taux de participation: 45,00 %</td></tr>
 </tbody></table>
 <p class="paragraph">Résulats intermédiaires de tous les objets:</p>
 <table><tbody>
 <tr><td>Extension des autoroutes: Résultats définitifs dans 3 cantons sur 26, a été acceptée avec 51 % de oui, selon une tendance de gfs.bern (16h30)
-</td></tr><tr><td>Assouplissement du droit de bail dans le domaine de la sous-location: Résultats définitifs dans 3 cantons sur 26, a été accepté avec 54 % de oui, selon une tendance de gfs.bern (16h30)
-</td></tr><tr><td>Assouplissement du droit de bail en faveur des propriétaires: Résultats définitifs dans 3 cantons sur 26, a été accepté avec 51 % de oui, selon une tendance de gfs.bern (16h30)
+</td></tr><tr><td>Révision du droit de bail (sous-location): Résultats définitifs dans 3 cantons sur 26, a été acceptée avec 54 % de oui, selon une tendance de gfs.bern (16h30)
+</td></tr><tr><td>Révision du droit de bail (propriétaires): Résultats définitifs dans 3 cantons sur 26, a été acceptée avec 51 % de oui, selon une tendance de gfs.bern (16h30)
 </td></tr><tr><td>Financement uniforme des soins (EFAS): Résultats définitifs dans 3 cantons sur 26, a été accepté avec 58 % de oui, selon une tendance de gfs.bern (16h30)
 </td></tr></tbody></table>
 

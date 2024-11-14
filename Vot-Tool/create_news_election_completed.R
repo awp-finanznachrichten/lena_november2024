@@ -77,25 +77,18 @@ text <- paste0(text,
                "<td></td>",
                "<td></td>",
                "<td></td>",
-               "<td></td></tr>\n",
-               "<tr>",
-               "<td>Kanton</td>",
-               "<td>Ja</td>",
-               "<td>Ja-Anteil</td>",
-               "<td>Nein</td>",
-               "<td>Nein-Anteil</td>",
-               "<td>Stimmbeteiligung</td></tr>\n")
+               "<td></td></tr>\n")
 
 }
 if (language == "fr") {
   text <- paste0(text,"<table><tbody>\n",
                  "<tr>",
                  "<td></td>",
-                 '<td>"sì"</td>',
-                 '<td>quota di "sì"</td>',
-                 '<td>"no"</td>',
-                 '<td>quota di "no"</td>',
-                 "<td>partecipazione al voto</td></tr>\n")  
+                 '<td>Oui</td>',
+                 '<td>Pourcentage de oui</td>',
+                 '<td>Non</td>',
+                 '<td>Pourcentage de non</td>',
+                 "<td>Taux de participation</td></tr>\n")  
   
   #Add Schweiz
   text <- paste0(text,"<tr>",
@@ -113,14 +106,7 @@ if (language == "fr") {
                  "<td></td>",
                  "<td></td>",
                  "<td></td>",
-                 "<td></td></tr>\n",
-                 "<tr>",
-                 "<td>cantone</td>",
-                 '<td>"sì"</td>',
-                 '<td>quota di "sì"</td>',
-                 '<td>"no"</td>',
-                 '<td>quota di "no"</td>',
-                 "<td>partecipazione al voto</td></tr>\n")  
+                 "<td></td></tr>\n")  
   
 }  
 if (language == "it") {
@@ -149,14 +135,7 @@ if (language == "it") {
                  "<td></td>",
                  "<td></td>",
                  "<td></td>",
-                 "<td></td></tr>\n",
-                 "<tr>",
-                 "<td>cantone</td>",
-                 '<td>"sì"</td>',
-                 '<td>quota di "sì"</td>',
-                 '<td>"no"</td>',
-                 '<td>quota di "no"</td>',
-                 "<td>partecipazione al voto</td></tr>\n")  
+                 "<td></td></tr>\n")  
 }  
 
 
@@ -165,9 +144,13 @@ for (c in 1:nrow(all_cantons)) {
     text <- paste0(text,
                    "<tr>",
                    "<td>",all_cantons$area_name_de[c],"</td>",
-                   "<td>",format(all_cantons$share_yes_votes[c],big.mark="'"),"</td>",
+                   "<td>",ifelse(all_cantons$share_yes_votes[c]>9999,
+                                 format(all_cantons$share_yes_votes[c],big.mark="'"),
+                                 all_cantons$share_yes_votes[c]),"</td>",
                    "<td>",gsub("[.]",",",format(all_cantons$share_yes_percentage[c],nsmall=2)),"%</td>",
-                   "<td>",format(all_cantons$share_no_votes[c],big.mark="'"),"</td>",
+                   "<td>",ifelse(all_cantons$share_no_votes[c]>9999,
+                                 format(all_cantons$share_no_votes[c],big.mark="'"),
+                                 all_cantons$share_no_votes[c]),"</td>",
                    "<td>",gsub("[.]",",",format(all_cantons$share_no_percentage[c],nsmall=2)),"%</td>",
                    "<td>",gsub("[.]",",",format(all_cantons$voter_participation[c],nsmall=2)),"%</td></tr>\n")
   }
@@ -175,9 +158,13 @@ for (c in 1:nrow(all_cantons)) {
     text <- paste0(text,
                    "<tr>",
                    "<td>",all_cantons$area_name_fr[c],"</td>",
-                   "<td>",format(all_cantons$share_yes_votes[c],big.mark="'"),"</td>",
+                   "<td>",ifelse(all_cantons$share_yes_votes[c]>9999,
+                                 format(all_cantons$share_yes_votes[c],big.mark="'"),
+                                 all_cantons$share_yes_votes[c]),"</td>",
                    "<td>",gsub("[.]",",",format(all_cantons$share_yes_percentage[c],nsmall=2)),"%</td>",
-                   "<td>",format(all_cantons$share_no_votes[c],big.mark="'"),"</td>",
+                   "<td>",ifelse(all_cantons$share_no_votes[c]>9999,
+                                 format(all_cantons$share_no_votes[c],big.mark="'"),
+                                 all_cantons$share_no_votes[c]),"</td>",
                    "<td>",gsub("[.]",",",format(all_cantons$share_no_percentage[c],nsmall=2)),"%</td>",
                    "<td>",gsub("[.]",",",format(all_cantons$voter_participation[c],nsmall=2)),"%</td></tr>\n")
   }  
@@ -185,9 +172,13 @@ for (c in 1:nrow(all_cantons)) {
     text <- paste0(text,
                    "<tr>",
                    "<td>",all_cantons$area_name_it[c],"</td>",
-                   "<td>",format(all_cantons$share_yes_votes[c],big.mark="'"),"</td>",
+                   "<td>",ifelse(all_cantons$share_yes_votes[c]>9999,
+                                 format(all_cantons$share_yes_votes[c],big.mark="'"),
+                                 all_cantons$share_yes_votes[c]),"</td>",
                    "<td>",gsub("[.]",",",format(all_cantons$share_yes_percentage[c],nsmall=2)),"%</td>",
-                   "<td>",format(all_cantons$share_no_votes[c],big.mark="'"),"</td>",
+                   "<td>",ifelse(all_cantons$share_no_votes[c]>9999,
+                                 format(all_cantons$share_no_votes[c],big.mark="'"),
+                                 all_cantons$share_no_votes[c]),"</td>",
                    "<td>",gsub("[.]",",",format(all_cantons$share_no_percentage[c],nsmall=2)),"%</td>",
                    "<td>",gsub("[.]",",",format(all_cantons$voter_participation[c],nsmall=2)),"%</td></tr>\n")
   }  
@@ -229,7 +220,7 @@ setwd("./Output_Mars")
 filename <- paste0(format(Sys.Date(),"%Y%m%d"),"_",format(Sys.time(),"%H"),"h_",vorlagen$id[v],"_final_overview_",language,".xml")
 cat(vorlage, file = (con <- file(filename, "w", encoding="UTF-8"))); close(con)
 
-Sys.sleep(5)
+#Sys.sleep(5)
 ###FTP-Upload
 ftpUpload(filename, paste0("ftp://awp-lena.sda-ats.ch/",filename),userpwd=Sys.getenv("ftp_sda"))
 

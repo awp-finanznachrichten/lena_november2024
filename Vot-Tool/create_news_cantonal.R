@@ -67,7 +67,7 @@ vorlage <- gsub("INSERT_SERVICE",service,vorlage)
 vorlage <- gsub("INSERT_NOTE",note,vorlage)
 vorlage <- gsub("INSERT_MEMO","DIES IST EIN TEST",vorlage)
 vorlage <- gsub("INSERT_HYPERLINK","",vorlage)
-vorlage <- gsub("INSERT_URGENCY","2",vorlage)
+vorlage <- gsub("INSERT_URGENCY","3",vorlage)
 vorlage <- gsub("INSERT_ID",ID,vorlage)
 vorlage <- gsub("INSERT_DATELINE",dateline,vorlage)
 vorlage <- gsub("INSERT_LANGUAGE",language,vorlage)
@@ -93,11 +93,9 @@ setwd("./Output_Mars")
 filename <- paste0(format(Sys.Date(),"%Y%m%d"),"_",output_overview$area_ID[i],"_results_",language,".xml")
 cat(vorlage, file = (con <- file(filename, "w", encoding="UTF-8"))); close(con)
 
-Sys.sleep(5)
+#Sys.sleep(5)
 ###FTP-Upload
 ftpUpload(filename, paste0("ftp://awp-lena.sda-ats.ch/",filename),userpwd=Sys.getenv("ftp_sda"))
 
 setwd("..")
-
-
 
