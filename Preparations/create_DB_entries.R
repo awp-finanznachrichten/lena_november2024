@@ -1,26 +1,21 @@
-#Canton Results
-mydb <- connectDB(db_name = "sda_votes")
-for (i in 1:nrow(vorlagen)) {
-  for (k in 1:nrow(meta_kt)) {
-  sql_qry <- paste0("INSERT IGNORE INTO cantons_results(area_ID,votes_ID,final_results) VALUES ",
-                    "('",meta_kt$area_ID[k],"','",vorlagen$id[i],"','0')")
-  rs <- dbSendQuery(mydb, sql_qry)
-  }
-}
+MAIN_PATH <- "C:/Users/simon/OneDrive/SDA_eidgenoessische_abstimmungen/sda_vot-tool"
 
-dbDisconnectAll()
+#Working Directory definieren
+setwd(MAIN_PATH)
 
-#Output Overview
-mydb <- connectDB(db_name = "sda_votes")
-  for (k in 1:nrow(meta_kt)) {
-    sql_qry <- paste0("INSERT IGNORE INTO output_overview(date,area_ID,voting_type) VALUES ",
-                      "('",voting_date,"','",meta_kt$area_ID[k],"','national')")
-    rs <- dbSendQuery(mydb, sql_qry)
-  }
-dbDisconnectAll()
+#Load Libraries and Functions
+source("./Config/load_libraries_functions.R",encoding = "UTF-8")
+
+###Set Constants###
+source("./Config/set_constants.R",encoding = "UTF-8")
+
+###Load texts and metadata###
+source("./Config/load_texts_metadata.R",encoding = "UTF-8")
+
+source("./Config/load_json_data.R",encoding = "UTF-8")
 
 
-
+#Results canton votes
 kantone_list <- json_data_kantone[["kantone"]]
 mydb <- connectDB(db_name = "sda_votes")
 for (k in 1:nrow(kantone_list)) {
@@ -31,25 +26,6 @@ for (k in 1:nrow(kantone_list)) {
 
 dbDisconnectAll()
 
-
-###ADD CH-Entry
-mydb <- connectDB(db_name = "sda_votes")
-sql_qry <- paste0("INSERT IGNORE INTO output_overview(date,area_ID,voting_type) VALUES ",
-                    "('",voting_date,"','CH','national')")
-rs <- dbSendQuery(mydb, sql_qry)
-dbDisconnectAll()
-
-#Extrapolations
-types <- c("extrapolation 1","extrapolation 2","extrapolation 3","trend")
-SRG_IDs <- c(5093:5096)
-mydb <- connectDB(db_name = "sda_votes")
-for (i in 1:nrow(vorlagen)) {
-  for (type in types) {
-  sql_qry <- paste0("INSERT IGNORE INTO extrapolations(votes_ID,type,SRG_ID,last_update) VALUES ",
-                    "('",vorlagen$id[i],"','",type,"','",SRG_IDs[i],"','",Sys.time(),"')")
-  rs <- dbSendQuery(mydb, sql_qry)
-  }
-}  
 
 #Enter Metadata from Spreadsheet
 metadata <- as.data.frame(read_excel(paste0("Texte/Textbausteine_LENA_",abstimmung_date,".xlsx"), 
