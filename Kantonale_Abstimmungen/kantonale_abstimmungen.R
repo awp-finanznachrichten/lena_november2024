@@ -112,8 +112,12 @@ for (k in 1:length(kantonal_short) ) {
            Text_f,
            Text_i)
 library(xlsx)
-write.xlsx(texts,paste0("./Texte/",kantonal_short[k],"_texte.xlsx"),row.names = FALSE)
-  }  
+write.xlsx(texts,paste0("./Texte/",kantonal_short[k],"_texte.xlsx"))
+  }
+
+  
+
+  
   ###Output generieren für Datawrapper
   #Output Abstimmungen Gemeinde
   output_dw_de <- get_output_gemeinden(results,language = "de")
