@@ -291,7 +291,10 @@ write.xlsx(texts,paste0("./Texte/",vorlagen_short[i],"_texte.xlsx"),row.names = 
 
   }  
   
-  datawrapper_codes_vorlage <- datawrapper_codes[datawrapper_codes$Vorlage == vorlagen_short[i],]
+  datawrapper_codes_vorlage <- datawrapper_codes %>%
+    filter(Vorlage == vorlagen_short[i],
+           Typ == "Schweizer Gemeinden" |
+             Typ == "Schweizer Kantone")
 
     #Karten Gemeinden
     dw_edit_chart(datawrapper_codes_vorlage$ID[1],intro=undertitel_de,annotate=paste0("Letzte Aktualisierung: ",format(Sys.time(),"%d.%m.%Y %H:%M Uhr")))

@@ -1,6 +1,4 @@
-MAIN_PATH <- "C:/Users/simon/OneDrive/SDA_eidgenoessische_abstimmungen/sda_vot-tool"
-
-#Working Directory definieren
+MAIN_PATH <- "C:/Users/sw/OneDrive/SDA_eidgenoessische_abstimmungen/20241124_LENA_Abstimmungen"
 setwd(MAIN_PATH)
 
 #Load Libraries and Functions
@@ -44,3 +42,4 @@ for (m in 1:nrow(metadata)) {
                     "','upcoming','canton_comparison','initiative','yes')")
   rs <- dbSendQuery(mydb, sql_qry)
 }
+dbDisconnectAll()

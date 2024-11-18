@@ -46,7 +46,7 @@ vorlagen_short <- vorlagen_selection$spreadsheet
 kantonal_selection <- votes_metadata %>% 
   filter(area_ID != "CH",
          lena_map == "yes",
-         is.na(remarks) == TRUE)
+         remarks != "special")
 kantonal_short <- kantonal_selection$spreadsheet
 
 

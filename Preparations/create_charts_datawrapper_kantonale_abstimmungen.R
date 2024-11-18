@@ -54,6 +54,7 @@ folder_kantone_uebersicht <- readRDS("./Preparations/folders/folder_kantone_uebe
 grafiken_uebersicht <- data.frame("Typ","Vorlage","Titel","Sprache","ID","Link","Iframe","Script")
 colnames(grafiken_uebersicht) <- c("Typ","Vorlage","Titel","Sprache","ID","Link","Iframe","Script")
 
+if (length(kantonal_short) > 0) {
 for (k in 1:length(kantonal_short)) {
   #Get Title and Info
   vorlage_id <- json_data_kantone[["kantone"]][["vorlagen"]][[kantonal_number[k]]][["vorlagenId"]][kantonal_add[k]]
@@ -66,7 +67,7 @@ if (is.na(Vorlagen_Info$Vorlage_d) == FALSE) {
   created_folder <- dw_create_folder(paste0(kantonal_short[k],"_DE"),parent_id = folder_kantonal$id) 
 
   dw_edit_chart(data_chart$id,
-                title=Vorlagen_Info$Vorlage_d,
+                title=paste0(substr(kantonal_short[k],1,2),": ",Vorlagen_Info$Vorlage_d),
                 intro = "&nbsp;",
                 annotate = "&nbsp;",
                 folderId = created_folder$id,
@@ -94,7 +95,7 @@ if (is.na(Vorlagen_Info$Vorlage_f) == FALSE) {
     created_folder <- dw_create_folder(paste0(kantonal_short[k],"_FR"),parent_id = folder_kantonal$id)
     
     dw_edit_chart(data_chart$id,
-                  title=Vorlagen_Info$Vorlage_f,
+                  title=paste0(substr(kantonal_short[k],1,2),": ",Vorlagen_Info$Vorlage_f),
                   intro = "&nbsp;",
                   annotate = "&nbsp;",
                   folderId = created_folder$id,
@@ -122,7 +123,7 @@ if (is.na(Vorlagen_Info$Vorlage_i) == FALSE) {
     created_folder <- dw_create_folder(paste0(kantonal_short[k],"_IT"),parent_id = folder_kantonal$id)
     
     dw_edit_chart(data_chart$id,
-                  title=Vorlagen_Info$Vorlage_i,
+                  title=paste0(substr(kantonal_short[k],1,2),": ",Vorlagen_Info$Vorlage_i),
                   intro = "&nbsp;",
                   annotate = "&nbsp;",
                   folderId = created_folder$id,
@@ -146,8 +147,10 @@ if (is.na(Vorlagen_Info$Vorlage_i) == FALSE) {
     grafiken_uebersicht <- rbind(grafiken_uebersicht,new_entry)
   }
 }
+}
 
 #Kantonale Abstimmungen Special
+if (length(kantonal_short_special)) {
 for (k in 1:length(kantonal_short_special)) {
   
   #Übersicht
@@ -512,6 +515,8 @@ for (k in 1:length(kantonal_short_special)) {
     grafiken_uebersicht <- rbind(grafiken_uebersicht,new_entry)
   }
 }
+}
+
 
 ###Overviews Kantone
 kantone_list <- json_data_kantone[["kantone"]]

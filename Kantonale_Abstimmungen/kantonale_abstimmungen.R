@@ -66,8 +66,14 @@ for (k in 1:length(kantonal_short) ) {
 #Vergleich innerhalb des Kantons (falls Daten vom Kanton vorhanden)
     
     if (json_data_kantone$kantone$vorlagen[[kantonal_number[k]]]$vorlageBeendet[[kantonal_add[k]]] == TRUE) {
-    results <- kanton_storyfinder_kantonal(results)
+        if (grepl("BS",kantonal_short[k]) == TRUE) {
+      cat("Kein kantonaler Vergleich\n\n")  
+    } else {  
+      results <- kanton_storyfinder_kantonal(results)
     }
+    }
+    
+
     
     #Textvorlagen laden
     Textbausteine <- as.data.frame(read_excel(paste0("Texte/Textbausteine_LENA_",abstimmung_date,".xlsx"), 
