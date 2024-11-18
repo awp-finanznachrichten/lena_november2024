@@ -4,8 +4,8 @@ voting_date <- "2024-11-24"
 date_voting <- "20241124"
 
 #Save texts? Simulation? Default FALSE
-save_texts <- FALSE
-simulation <- FALSE
+save_texts <- TRUE
+simulation <- TRUE
 
 #Mail
 #DEFAULT_MAILS <- "contentdevelopment@keystone-sda.ch, robot-notification@awp.ch"
