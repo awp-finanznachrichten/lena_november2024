@@ -170,7 +170,7 @@ for (v in 1:length(vorlagen_short)) {
                   data=list("external-data"=paste0("https://raw.githubusercontent.com/awp-finanznachrichten/lena_",
                                                    gsub("ä","ae",tolower(monate_de[month(voting_date)])),year(voting_date),
                                                    "/master/Output_Cantons/",cantons_overview$area_ID[c],"_",vorlagen_short[v],"_dw_de.csv")),
-                  visualize=list("hide-empty-regions" = TRUE))
+                  visualize = list("mapView" = "crop"))
     dw_publish_chart(data_chart$id)
     metadata_chart <- dw_retrieve_chart_metadata(data_chart$id)
     
@@ -195,7 +195,7 @@ for (v in 1:length(vorlagen_short)) {
                   data=list("external-data"=paste0("https://raw.githubusercontent.com/awp-finanznachrichten/lena_",
                                                    gsub("ä","ae",tolower(monate_de[month(voting_date)])),year(voting_date),
                                                    "/master/Output_Cantons/",cantons_overview$area_ID[c],"_",vorlagen_short[v],"_dw_fr.csv")),
-                  visualize=list("hide-empty-regions" = TRUE))
+                  visualize = list("mapView" = "crop"))
     dw_publish_chart(data_chart$id)
     metadata_chart <- dw_retrieve_chart_metadata(data_chart$id)
     
@@ -220,7 +220,7 @@ for (v in 1:length(vorlagen_short)) {
                   data=list("external-data"=paste0("https://raw.githubusercontent.com/awp-finanznachrichten/lena_",
                                                    gsub("ä","ae",tolower(monate_de[month(voting_date)])),year(voting_date),
                                                    "/master/Output_Cantons/",cantons_overview$area_ID[c],"_",vorlagen_short[v],"_dw_it.csv")),
-                  visualize=list("hide-empty-regions" = TRUE))
+                  visualize = list("mapView" = "crop"))
     
     dw_publish_chart(data_chart$id)
     metadata_chart <- dw_retrieve_chart_metadata(data_chart$id)
