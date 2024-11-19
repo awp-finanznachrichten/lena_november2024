@@ -384,12 +384,14 @@ write.xlsx(texts,paste0("./Texte/",kantonal_short_special[s],"_texte.xlsx"),row.
 #    }
       if (sum(results$Gebiet_Ausgezaehlt) == nrow(results)) {
         
+        if (simulation == FALSE) {
         #Set mail output to done
         mydb <- connectDB(db_name = "sda_votes")  
         sql_qry <- paste0("UPDATE votes_metadata SET status = 'done' WHERE date = '",voting_date,"' AND spreadsheet = '",kantonal_short_special[s],"'")
         rs <- dbSendQuery(mydb, sql_qry)
         dbDisconnectAll() 
 
+        }
         print(paste0("Alle Daten der Abstimmung ",kantonal_short_special[s]," vorhanden"))
       }
     }    
