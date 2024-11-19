@@ -1,6 +1,9 @@
 #Set Working Path
-MAIN_PATH <- "C:/Users/sw/OneDrive/SDA_eidgenoessische_abstimmungen/20241124_LENA_Abstimmungen"
+MAIN_PATH <- "C:/Users/simon/OneDrive/SDA_eidgenoessische_abstimmungen/20241124_LENA_Abstimmungen"
 setwd(MAIN_PATH)
+
+#Github Token
+WD_GITHUB_TOKEN <- "C:/Users/simon/OneDrive/Github_Token/token.txt"
 
 #Load Libraries and Functions
 source("./Config/load_libraries_functions.R",encoding = "UTF-8")
@@ -32,13 +35,13 @@ timestamp_kantonal <- timestamps$last_update[1]
 time_check_national <- timestamp_national == json_data$timestamp
 time_check_kantonal <- timestamp_kantonal == json_data_kantone$timestamp
 
-if ((time_check_national == TRUE) & (time_check_kantonal == TRUE)) {
+if ((time_check_national == TRUE) & (time_check_kantonal == TRUE) & (simulation == FALSE)) {
 print("Keine neuen Daten gefunden")  
 } else {
 print("Neue Daten gefunden")
 time_start <- Sys.time()
 
-if (time_check_national == FALSE) {
+if (time_check_national == FALSE || simulation == TRUE) {
   
   ###Nationale Abstimmungen###
   source("./Nationale_Abstimmungen/nationale_abstimmungen.R", encoding="UTF-8")
@@ -50,7 +53,7 @@ if (time_check_national == FALSE) {
   #source("votations_septembre_2024/top_flop/09_24_top_flop_run.R", encoding="UTF-8")
 }
 
-if (time_check_kantonal == FALSE) {  
+if (time_check_kantonal == FALSE || simulation == TRUE) {   
   ###Kantonale Abstimmungen Uebersicht  
   source("./Kantonale_Abstimmungen/kantonale_abstimmungen_uebersicht.R", encoding="UTF-8")
   

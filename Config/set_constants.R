@@ -4,7 +4,7 @@ voting_date <- "2024-11-24"
 date_voting <- "20241124"
 
 #Save texts? Simulation? Default FALSE
-save_texts <- TRUE
+save_texts <- FALSE
 simulation <- TRUE
 
 #Mail
@@ -17,6 +17,7 @@ FEED_CANTONAL <- "https://app-prod-static-voteinfo.s3.eu-central-1.amazonaws.com
 
 #Spezialfälle?
 other_check <- FALSE
+
 
 sprachen <- c("de","fr","it")
 
