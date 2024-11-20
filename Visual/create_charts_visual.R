@@ -25,9 +25,9 @@ vorlage_gemeinde <- c("kDkMR","5NIK3","Idw6B")
 vorlage_kantone <- c("Tfr6N","RZFmo","fOEsn")
 
 #Ordner Codes
-folder_de <- "244619"
-folder_fr <- "244619"
-folder_it <- "244619"
+folder_de <- "279016"
+folder_fr <- "279016"
+folder_it <- "279016"
 
 #Datum
 datum_de <- "24. November 2024"
