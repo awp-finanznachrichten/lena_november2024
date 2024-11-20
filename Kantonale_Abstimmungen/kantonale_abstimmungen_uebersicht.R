@@ -96,6 +96,11 @@ colnames(entry_overview) <- c("Ja","Nein","Abstimmung_de","Abstimmung_fr","Absti
 data_overview <- rbind(data_overview,entry_overview)
 }
 data_overview <- data_overview[-1,]
+
+if ((kantone_list$geoLevelname[k] == "SH") & (voting_date == "2024-11-24")) {
+data_overview <- data_overview[c(1,2,4,3),]
+}  
+
 write.csv(data_overview,paste0("Output_Overviews/Uebersicht_dw_",kantone_list$geoLevelname[k],".csv"), na = "", row.names = FALSE, fileEncoding = "UTF-8")
 
 #Update Datawrapper-Chart
