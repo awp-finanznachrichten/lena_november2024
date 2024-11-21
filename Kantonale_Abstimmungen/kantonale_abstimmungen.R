@@ -115,9 +115,6 @@ library(xlsx)
 write.xlsx(texts,paste0("./Texte/",kantonal_short[k],"_texte.xlsx"))
   }
 
-  
-
-  
   ###Output generieren für Datawrapper
   #Output Abstimmungen Gemeinde
   output_dw_de <- get_output_gemeinden(results,language = "de")
