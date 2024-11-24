@@ -1,9 +1,9 @@
 #Set Working Path
-MAIN_PATH <- "C:/Users/sw/OneDrive/SDA_eidgenoessische_abstimmungen/20241124_LENA_Abstimmungen"
+MAIN_PATH <- "C:/Users/simon/OneDrive/SDA_eidgenoessische_abstimmungen/20241124_LENA_Abstimmungen"
 setwd(MAIN_PATH)
 
 #Github Token
-WD_GITHUB_TOKEN <- "C:/Users/sw/OneDrive/Github_Token/token.txt"
+WD_GITHUB_TOKEN <- "C:/Users/simon/OneDrive/Github_Token/token.txt"
 
 #Load Libraries and Functions
 source("./Config/load_libraries_functions.R",encoding = "UTF-8")
