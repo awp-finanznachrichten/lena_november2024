@@ -1,20 +1,20 @@
 "ID","Gemeinde_color","Ja_Stimmen_In_Prozent","Nein_Stimmen_In_Prozent","Gemeinde_it","Text_it"
-6002,50,0,0,"Briga-Glis (VS)","I risultati di questo comune non sono ancora noti."
+6002,39,39,61,"Briga-Glis (VS)",
 6004,28.8,28.8,71.2,"Eggerberg (VS)",
 6007,50,0,0,"Naters (VS)","I risultati di questo comune non sono ancora noti."
 6008,35.7,35.7,64.3,"Ried-Brig (VS)",
 6009,50,0,0,"Sempione (VS)","I risultati di questo comune non sono ancora noti."
 6010,31.7,31.7,68.3,"Termen (VS)",
-6011,50,0,0,"Zwischbergen (VS)","I risultati di questo comune non sono ancora noti."
+6011,3.7,3.7,96.3,"Zwischbergen (VS)",
 6021,28.3,28.3,71.7,"Ardon (VS)",
-6022,50,0,0,"Chamoson (VS)","I risultati di questo comune non sono ancora noti."
+6022,41.2,41.2,58.8,"Chamoson (VS)",
 6023,46.4,46.4,53.6,"Conthey (VS)",
 6024,44.9,44.9,55.1,"Nendaz (VS)",
 6025,42,42,58,"Vétroz (VS)",
 6032,27.2,27.2,72.8,"Bourg-Saint-Pierre (VS)",
 6033,39.9,39.9,60.1,"Liddes (VS)",
 6034,38.7,38.7,61.3,"Orsières (VS)",
-6035,50,0,0,"Sembrancher (VS)","I risultati di questo comune non sono ancora noti."
+6035,33.7,33.7,66.3,"Sembrancher (VS)",
 6037,50,0,0,"Val de Bagnes (VS)","I risultati di questo comune non sono ancora noti."
 6052,29.8,29.8,70.2,"Bellwald (VS)",
 6054,33.3,33.3,66.7,"Binn (VS)",
@@ -45,11 +45,11 @@
 6131,39.4,39.4,60.6,"Bovernier (VS)",
 6133,50,0,0,"Fully (VS)","I risultati di questo comune non sono ancora noti."
 6134,36.9,36.9,63.1,"Isérables (VS)",
-6135,50,0,0,"Leytron (VS)","I risultati di questo comune non sono ancora noti."
+6135,44.8,44.8,55.2,"Leytron (VS)",
 6136,50,0,0,"Martigny (VS)","I risultati di questo comune non sono ancora noti."
 6137,50,0,0,"Martigny-Combe (VS)","I risultati di questo comune non sono ancora noti."
 6139,44,44,56,"Riddes (VS)",
-6140,50,0,0,"Saillon (VS)","I risultati di questo comune non sono ancora noti."
+6140,47.6,47.6,52.4,"Saillon (VS)",
 6141,50,0,0,"Saxon (VS)","I risultati di questo comune non sono ancora noti."
 6142,50,0,0,"Trient (VS)","I risultati di questo comune non sono ancora noti."
 6151,42,42,58,"Champéry (VS)",
@@ -61,10 +61,10 @@
 6157,38.1,38.1,61.9,"Val-d'Illiez (VS)",
 6158,48.1,48.1,51.9,"Vionnaz (VS)",
 6159,48.9,48.9,51.1,"Vouvry (VS)",
-6172,50,0,0,"Bister (VS)","I risultati di questo comune non sono ancora noti."
+6172,33.3,33.3,66.7,"Bister (VS)",
 6173,50,0,0,"Bitsch (VS)","I risultati di questo comune non sono ancora noti."
 6177,34.9,34.9,65.1,"Grengiols (VS)",
-6181,50,0,0,"Riederalp (VS)","I risultati di questo comune non sono ancora noti."
+6181,36,36,64,"Riederalp (VS)",
 6191,32.4,32.4,67.6,"Ausserberg (VS)",
 6192,35.7,35.7,64.3,"Blatten (VS)",
 6193,50,0,0,"Bürchen (VS)","I risultati di questo comune non sono ancora noti."
@@ -91,11 +91,11 @@
 6235,46.6,46.6,53.4,"Chippis (VS)",
 6238,38.5,38.5,61.5,"Grône (VS)",
 6239,50,0,0,"Icogne (VS)","I risultati di questo comune non sono ancora noti."
-6240,50,0,0,"Lens (VS)","I risultati di questo comune non sono ancora noti."
+6240,49.4,49.4,50.6,"Lens (VS)",
 6246,40.8,40.8,59.2,"Saint-Léonard (VS)",
 6248,50,0,0,"Sierre (VS)","I risultati di questo comune non sono ancora noti."
 6252,48.8,48.8,51.2,"Anniviers (VS)",
-6253,50,0,0,"Crans-Montana (VS)","I risultati di questo comune non sono ancora noti."
+6253,47.4,47.4,52.6,"Crans-Montana (VS)",
 6254,50.3,50.3,49.7,"Noble-Contrée (VS)",
 6261,48.6,48.6,51.4,"Arbaz (VS)",
 6263,51.6,51.6,48.4,"Grimisuat (VS)",
