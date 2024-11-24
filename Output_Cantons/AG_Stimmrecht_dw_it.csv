@@ -1,23 +1,23 @@
 "ID","Gemeinde_color","Ja_Stimmen_In_Prozent","Nein_Stimmen_In_Prozent","Gemeinde_it","Text_it"
-4001,50,0,0,"Aarau (AG)","I risultati di questo comune non sono ancora noti."
+4001,35.1,35.1,64.9,"Aarau (AG)",
 4002,19.9,19.9,80.1,"Biberstein (AG)",
 4003,26,26,74,"Buchs (AG)",
 4004,18.4,18.4,81.6,"Densbüren (AG)",
-4005,50,0,0,"Erlinsbach (AG)","I risultati di questo comune non sono ancora noti."
+4005,19.2,19.2,80.8,"Erlinsbach (AG)",
 4006,16.9,16.9,83.1,"Gränichen (AG)",
 4007,14.4,14.4,85.6,"Hirschthal (AG)",
 4008,24.9,24.9,75.1,"Küttigen (AG)",
-4009,50,0,0,"Muhen (AG)","I risultati di questo comune non sono ancora noti."
+4009,17.2,17.2,82.8,"Muhen (AG)",
 4010,15.8,15.8,84.2,"Oberentfelden (AG)",
 4012,27.6,27.6,72.4,"Suhr (AG)",
-4013,50,0,0,"Unterentfelden (AG)","I risultati di questo comune non sono ancora noti."
+4013,20.6,20.6,79.4,"Unterentfelden (AG)",
 4021,50,0,0,"Baden (AG)","I risultati di questo comune non sono ancora noti."
 4022,50,0,0,"Bellikon (AG)","I risultati di questo comune non sono ancora noti."
 4023,17.5,17.5,82.5,"Bergdietikon (AG)",
 4024,18.6,18.6,81.4,"Birmenstorf (AG)",
 4026,35.9,35.9,64.1,"Ennetbaden (AG)",
 4027,19,19,81,"Fislisbach (AG)",
-4028,50,0,0,"Freienwil (AG)","I risultati di questo comune non sono ancora noti."
+4028,23.9,23.9,76.1,"Freienwil (AG)",
 4029,20.6,20.6,79.4,"Gebenstorf (AG)",
 4030,20,20,80,"Killwangen (AG)",
 4031,18.4,18.4,81.6,"Künten (AG)",
@@ -30,13 +30,13 @@
 4039,14.5,14.5,85.5,"Remetschwil (AG)",
 4040,20.8,20.8,79.2,"Spreitenbach (AG)",
 4041,19.2,19.2,80.8,"Stetten (AG)",
-4044,50,0,0,"Untersiggenthal (AG)","I risultati di questo comune non sono ancora noti."
+4044,21.5,21.5,78.5,"Untersiggenthal (AG)",
 4045,50,0,0,"Wettingen (AG)","I risultati di questo comune non sono ancora noti."
 4046,18,18,82,"Wohlenschwil (AG)",
 4047,14.7,14.7,85.3,"Würenlingen (AG)",
 4048,20.5,20.5,79.5,"Würenlos (AG)",
 4049,19.2,19.2,80.8,"Ehrendingen (AG)",
-4061,50,0,0,"Arni (AG)","I risultati di questo comune non sono ancora noti."
+4061,20.4,20.4,79.6,"Arni (AG)",
 4062,18.5,18.5,81.5,"Berikon (AG)",
 4063,25.2,25.2,74.8,"Bremgarten (AG)",
 4064,11.5,11.5,88.5,"Büttikon (AG)",
@@ -55,7 +55,7 @@
 4079,17.7,17.7,82.3,"Unterlunkhofen (AG)",
 4080,13.3,13.3,86.7,"Villmergen (AG)",
 4081,19.6,19.6,80.4,"Widen (AG)",
-4082,50,0,0,"Wohlen (AG)","I risultati di questo comune non sono ancora noti."
+4082,17.9,17.9,82.1,"Wohlen (AG)",
 4083,17.8,17.8,82.2,"Zufikon (AG)",
 4084,20,20,80,"Islisberg (AG)",
 4091,15.2,15.2,84.8,"Auenstein (AG)",
@@ -75,7 +75,7 @@
 4120,14,14,86,"Veltheim (AG)",
 4121,12.6,12.6,87.4,"Villigen (AG)",
 4122,19.3,19.3,80.7,"Villnachern (AG)",
-4123,50,0,0,"Windisch (AG)","I risultati di questo comune non sono ancora noti."
+4123,31.8,31.8,68.2,"Windisch (AG)",
 4124,20.1,20.1,79.9,"Bözberg (AG)",
 4125,20.1,20.1,79.9,"Schinznach (AG)",
 4131,20.7,20.7,79.3,"Beinwil am See (AG)",
@@ -120,7 +120,7 @@
 4197,13.6,13.6,86.4,"Hallwil (AG)",
 4198,19.1,19.1,80.9,"Hendschiken (AG)",
 4199,15.3,15.3,84.7,"Holderbank (AG)",
-4200,50,0,0,"Hunzenschwil (AG)","I risultati di questo comune non sono ancora noti."
+4200,11.3,11.3,88.7,"Hunzenschwil (AG)",
 4201,50,0,0,"Lenzburg (AG)","I risultati di questo comune non sono ancora noti."
 4202,15.2,15.2,84.8,"Meisterschwanden (AG)",
 4203,15.2,15.2,84.8,"Möriken-Wildegg (AG)",
@@ -152,7 +152,7 @@
 4240,17.6,17.6,82.4,"Waltenschwil (AG)",
 4251,14.3,14.3,85.7,"Hellikon (AG)",
 4252,19.6,19.6,80.4,"Kaiseraugst (AG)",
-4253,50,0,0,"Magden (AG)","I risultati di questo comune non sono ancora noti."
+4253,20.1,20.1,79.9,"Magden (AG)",
 4254,20.2,20.2,79.8,"Möhlin (AG)",
 4255,16.3,16.3,83.7,"Mumpf (AG)",
 4256,17.7,17.7,82.3,"Obermumpf (AG)",
@@ -185,7 +185,7 @@
 4304,14.1,14.1,85.9,"Döttingen (AG)",
 4305,20.7,20.7,79.3,"Endingen (AG)",
 4306,18.9,18.9,81.1,"Fisibach (AG)",
-4307,50,0,0,"Full-Reuenthal (AG)","I risultati di questo comune non sono ancora noti."
+4307,16.1,16.1,83.9,"Full-Reuenthal (AG)",
 4309,18.7,18.7,81.3,"Klingnau (AG)",
 4310,18.1,18.1,81.9,"Koblenz (AG)",
 4311,10.3,10.3,89.7,"Leibstadt (AG)",
