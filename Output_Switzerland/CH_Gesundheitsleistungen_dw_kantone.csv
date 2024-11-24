@@ -1,5 +1,5 @@
 "Kantons_Nr","Kanton_d","Kanton_f","Kanton_i","Ja_Stimmen_In_Prozent_Kanton","Nein_Stimmen_In_Prozent_Kanton","Kanton_color","Gemeinden_overall","Gemeinden_counted","Legende","Text_de","Text_fr","Text_it"
-1,"Zürich","Zurich","Zurigo",58.8,41.2,100,160,159,"159/160","Es sind <b>159 von 160</b> Gemeinden ausgezählt.","Le résultats de <b>159 des 160 communes sont connus.","I risultati di <b>159 dei 160 comuni sono noti."
+1,"Zürich","Zurich","Zurigo",58.7,41.3,100,160,159,"159/160","Es sind <b>159 von 160</b> Gemeinden ausgezählt.","Le résultats de <b>159 des 160 communes sont connus.","I risultati di <b>159 dei 160 comuni sono noti."
 2,"Bern","Berne","Berna",53.2,46.8,100,330,221,"221/330","Es sind <b>221 von 330</b> Gemeinden ausgezählt.","Le résultats de <b>221 des 330 communes sont connus.","I risultati di <b>221 dei 330 comuni sono noti."
 3,"Luzern","Lucerne","Lucerna",61.1,38.9,61.1,80,80,,"Es sind alle Gemeinden ausgezählt.","Les résultats de toutes les communes sont connus.","Tutti i comuni sono noti."
 4,"Uri","Uri","Uri",60.3,39.7,60.3,19,19,,"Es sind alle Gemeinden ausgezählt.","Les résultats de toutes les communes sont connus.","Tutti i comuni sono noti."
@@ -23,5 +23,5 @@
 22,"Waadt","Vaud","Vaud",37.7,62.3,37.7,300,300,,"Es sind alle Gemeinden ausgezählt.","Les résultats de toutes les communes sont connus.","Tutti i comuni sono noti."
 23,"Wallis","Valais","Vallese",46.5,53.5,46.5,122,122,,"Es sind alle Gemeinden ausgezählt.","Les résultats de toutes les communes sont connus.","Tutti i comuni sono noti."
 24,"Neuenburg","Neuchâtel","Neuchâtel",34.4,65.6,34.4,27,27,,"Es sind alle Gemeinden ausgezählt.","Les résultats de toutes les communes sont connus.","Tutti i comuni sono noti."
-25,"Genf","Genève","Ginevra",0,0,50,45,0,"0/45","Es sind noch keine Gemeinden ausgezählt","Aucun résultat n'est encore connu.","Nessun risultato è ancora noto."
+25,"Genf","Genève","Ginevra",35,65,0,45,0,"0/45","Die brieflichen Stimmen sind ausgezählt.","Les votes par correspondance ont été dépouillés.","I voti per corrispondenza sono stati scrutinati."
 26,"Jura","Jura","Giura",36.9,63.1,36.9,50,50,,"Es sind alle Gemeinden ausgezählt.","Les résultats de toutes les communes sont connus.","Tutti i comuni sono noti."
